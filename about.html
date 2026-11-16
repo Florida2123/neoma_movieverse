@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blush">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About My Project — Neoma</title>
+  <meta name="description" content="The story behind Neoma: a Class 10 school cinema monograph by Supriya exploring films that teach science, courage, and imagination.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <!-- CDNs (Pinned versions) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/themes.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand-link" aria-label="Neoma Home">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(72 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(144 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(216 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(288 12 12)" opacity="0.8" />
+        </svg>
+        <span data-personal="site-title">Neoma</span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="films.html" class="nav-link">Film Archive</a></li>
+          <li><a href="about.html" class="nav-link active">About &amp; Story</a></li>
+          <li>
+            <a href="settings.html" class="nav-link nav-icon-link" aria-label="Settings" title="Settings">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="films.html" class="btn btn-outline" style="padding: 0.5rem 1.15rem; font-size: 0.85rem;">View Archive</a>
+        <button class="menu-toggle-btn" aria-label="Open mobile menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <button class="close-btn" aria-label="Close mobile navigation">✕</button>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="films.html">Film Archive (14)</a></li>
+      <li><a href="about.html" class="active">About &amp; Story</a></li>
+      <li><a href="settings.html">Preferences &amp; Themes</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+    <!-- About Hero Section -->
+    <section class="about-hero container">
+      <div class="about-grid">
+        <!-- Photo Arch Illustration Placeholder -->
+        <div class="about-photo-arch">
+          <svg viewBox="0 0 400 500" width="100%" height="100%" style="background:linear-gradient(135deg, var(--primary-soft), var(--bg));">
+            <defs>
+              <linearGradient id="photoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.3" />
+                <stop offset="100%" stop-color="var(--deep)" stop-opacity="0.7" />
+              </linearGradient>
+            </defs>
+            <circle cx="200" cy="200" r="120" fill="url(#photoGrad)" />
+            <path d="M 200 120 C 230 160 250 190 200 260 C 150 190 170 160 200 120 Z" fill="rgba(255,255,255,0.4)" />
+            <text x="200" y="340" text-anchor="middle" font-family="'Playfair Display', serif" font-size="28" font-weight="700" fill="var(--ink)">Supriya</text>
+            <text x="200" y="375" text-anchor="middle" font-family="'Caveat', cursive" font-size="20" fill="var(--primary)">Class 10 Student &amp; Curator</text>
+            <text x="200" y="415" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="2" fill="var(--ink-faint)">CLASS 10 SCHOOL PROJECT · 2026</text>
+          </svg>
+        </div>
+
+        <div>
+          <div class="section-eyebrow">Class 10 School Project</div>
+          <h1 class="archive-title" style="margin-bottom:1.5rem;">Why I Chose Cinema for My School Project</h1>
+          <div class="drop-cap" style="color:var(--ink); font-size:1.1rem; line-height:1.8;">
+            <p>
+              As a Class 10 student preparing for board exams, my days are filled with solving quadratic equations, balancing chemical equations, and memorizing physics laws. But outside the classroom, I’ve always turned to movies to understand how those ideas live in the real world. Cinema proved to me that science isn't just dry lines on a chalkboard—it is Homer Hickam studying trigonometry in <em>October Sky</em> to build rockets, William Kamkwamba turning scrap metal into a wind turbine in Malawi, and Katherine Johnson calculating orbital trajectories at NASA.
+            </p>
+            <p>
+              For my annual school project, instead of making a typical slide deck or poster board, I wanted to create something lasting: an interactive digital monograph exploring 14 films that shaped how I think about science, ethics, courage, and my future. Each movie here represents a life lesson that textbook chapters alone couldn't teach me—from the neuroscience of emotions in <em>Inside Out</em> to the quiet resilience needed to overcome academic self-doubt in <em>Akeelah and the Bee</em>.
+            </p>
+            <p>
+              I built this website using pure HTML, CSS, and vanilla JavaScript, applying what I learned in computer science with my love for stories. I hope my classmates, teachers, and visitors find something here that inspires them to dream bigger.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Timeline -->
+    <section class="container about-timeline">
+      <div class="section-eyebrow">Milestones</div>
+      <h2 class="section-heading">How My School Project Developed</h2>
+
+      <div style="border-left:2px solid var(--border); padding-left:2rem; margin-top:2.5rem; display:flex; flex-direction:column; gap:2.5rem;">
+        <div>
+          <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--primary); font-weight:700;">PHASE 1 — CURATING THE 14 FILMS</div>
+          <h3 style="font-family:var(--font-display); font-size:1.4rem; margin:0.35rem 0;">Connecting Cinema to High School Science &amp; Ethics</h3>
+          <p style="color:var(--ink-muted); margin:0;">Selecting 14 defining films that bridge our high school curriculum—physics, robotics, mathematics, psychology, and environmental science—with human perseverance.</p>
+        </div>
+
+        <div>
+          <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--primary); font-weight:700;">PHASE 2 — RESEARCH &amp; ESSAY WRITING</div>
+          <h3 style="font-family:var(--font-display); font-size:1.4rem; margin:0.35rem 0;">Analyzing Themes from a Student Perspective</h3>
+          <p style="color:var(--ink-muted); margin:0;">Drafting in-depth synopses, personal reviews, favorite scenes, and key life takeaways for each title as an academic study.</p>
+        </div>
+
+        <div>
+          <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--primary); font-weight:700;">PHASE 3 — THE DIGITAL WEB MONOGRAPH</div>
+          <h3 style="font-family:var(--font-display); font-size:1.4rem; margin:0.35rem 0;">A Pure Vanilla Code Presentation</h3>
+          <p style="color:var(--ink-muted); margin:0;">Coded entirely from scratch in vanilla HTML5, CSS custom properties, canvas 2D falling Sakura physics, ambient sound, and Web Speech narration for accessibility.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Behind the Site: Technology & Craft -->
+    <section class="container" style="padding-bottom:5rem;">
+      <div class="section-eyebrow">Computer Science Practical</div>
+      <h2 class="section-heading">The Code &amp; Technology Behind My Project</h2>
+      <p style="color:var(--ink-muted); max-width:650px;">
+        Built without complex framework dependencies or build tools. As part of my computer science learning, I relied on pure semantic HTML5, modern CSS custom properties, and modular vanilla JavaScript.
+      </p>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-title">VANILLA ES MODULES</div>
+          <p style="font-size:0.88rem; color:var(--ink-muted); margin:0;">Zero bundlers, zero framework overhead. Clean modular JavaScript architecture.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-title">GSAP &amp; SCROLLTRIGGER</div>
+          <p style="font-size:0.88rem; color:var(--ink-muted); margin:0;">Silky editorial motion, text mask reveals, and GSAP Flip grid animations.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-title">LENIS SMOOTH SCROLL</div>
+          <p style="font-size:0.88rem; color:var(--ink-muted); margin:0;">Physics-based momentum scrolling synced seamlessly with ScrollTrigger tickers.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-title">WEB SPEECH SYNTHESIS</div>
+          <p style="font-size:0.88rem; color:var(--ink-muted); margin:0;">Sentence-chunked audio narration with real-time text highlight tracking.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-title">CANVAS 2D SAKURA PHYSICS</div>
+          <p style="font-size:0.88rem; color:var(--ink-muted); margin:0;">DPR-aware falling petal engine with mouse repulsion and scroll wind gusts.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-title">WEB AUDIO SYNTHESIZER</div>
+          <p style="font-size:0.88rem; color:var(--ink-muted); margin:0;">Generative pentatonic ambient chords and subtle UI feedback without external dependencies.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-wordmark">NEOMA</div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4 style="font-family:var(--font-display); font-size:1.5rem; margin-bottom:0.5rem;" data-personal="site-title">Neoma</h4>
+          <p>A Class 10 school cinema monograph by Supriya.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="films.html">Film Archive</a></li>
+            <li><a href="about.html">About &amp; Story</a></li>
+            <li><a href="settings.html">Settings</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Preferences</div>
+          <ul class="footer-links">
+            <li><a href="settings.html">Theme Settings</a></li>
+            <li><a href="settings.html">Audio Preferences</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div>© 2026 Neoma · Pure vanilla code.</div>
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <button class="had-fun-btn" id="btn-had-fun" aria-label="Had Fun?">
+          <span>Had Fun? 🌸</span>
+        </button>
+        <button class="back-to-top-btn" aria-label="Back to top">
+          <span>Back to Top</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Core App Init -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
+

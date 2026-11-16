@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blush">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preferences &amp; Customization — Neoma</title>
+  <meta name="description" content="Personalize visual themes, motion speed, falling petals physics, ambient music, speech narration, and typography.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Cormorant+Garamond:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+  <!-- CDNs (Pinned versions) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/themes.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand-link" aria-label="Neoma Home">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(72 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(144 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(216 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(288 12 12)" opacity="0.8" />
+        </svg>
+        <span data-personal="site-title">Neoma</span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="films.html" class="nav-link">Film Archive</a></li>
+          <li><a href="about.html" class="nav-link">About &amp; Story</a></li>
+          <li>
+            <a href="settings.html" class="nav-link nav-icon-link active" aria-label="Settings" title="Settings">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="films.html" class="btn btn-outline" style="padding: 0.5rem 1.15rem; font-size: 0.85rem;">View Archive</a>
+        <button class="menu-toggle-btn" aria-label="Open mobile menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <button class="close-btn" aria-label="Close mobile navigation">✕</button>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="films.html">Film Archive (14)</a></li>
+      <li><a href="about.html">About &amp; Story</a></li>
+      <li><a href="settings.html" class="active">Preferences &amp; Themes</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content" class="container">
+    <div class="settings-layout">
+      <!-- Settings Accordion / Panels Column -->
+      <div class="settings-panel">
+        <div>
+          <div class="section-eyebrow">Personalization &amp; Control</div>
+          <h1 class="archive-title">Monograph Preferences</h1>
+          <p style="color:var(--ink-muted);">
+            All adjustments are persisted instantly to local storage and reflected in real-time across the entire journal.
+          </p>
+        </div>
+
+        <!-- 1. Color Themes -->
+        <section class="settings-card" id="themes">
+          <h2 class="settings-card-title">Curated Aesthetic Themes</h2>
+          <p class="settings-card-desc">Choose one of six handcrafted color palettes designed for soft-luxury reading.</p>
+
+          <div class="theme-swatches-grid">
+            <button class="theme-swatch-btn active" data-theme-val="blush">
+              <div class="swatch-colors-preview">
+                <div class="swatch-color-bar" style="background:#FFF5F7;"></div>
+                <div class="swatch-color-bar" style="background:#E85D8A;"></div>
+                <div class="swatch-color-bar" style="background:#2A1420;"></div>
+              </div>
+              <span class="theme-swatch-name">Blush (Default)</span>
+            </button>
+
+            <button class="theme-swatch-btn" data-theme-val="midnight-rose">
+              <div class="swatch-colors-preview">
+                <div class="swatch-color-bar" style="background:#14080F;"></div>
+                <div class="swatch-color-bar" style="background:#F06D9A;"></div>
+                <div class="swatch-color-bar" style="background:#FDEFF3;"></div>
+              </div>
+              <span class="theme-swatch-name">Midnight Rose</span>
+            </button>
+
+            <button class="theme-swatch-btn" data-theme-val="sakura">
+              <div class="swatch-colors-preview">
+                <div class="swatch-color-bar" style="background:#FDF7F8;"></div>
+                <div class="swatch-color-bar" style="background:#F48FB1;"></div>
+                <div class="swatch-color-bar" style="background:#2E1823;"></div>
+              </div>
+              <span class="theme-swatch-name">Sakura</span>
+            </button>
+
+            <button class="theme-swatch-btn" data-theme-val="rose-gold">
+              <div class="swatch-colors-preview">
+                <div class="swatch-color-bar" style="background:#FAF5F3;"></div>
+                <div class="swatch-color-bar" style="background:#D47A6A;"></div>
+                <div class="swatch-color-bar" style="background:#2B1D19;"></div>
+              </div>
+              <span class="theme-swatch-name">Rose Gold</span>
+            </button>
+
+            <button class="theme-swatch-btn" data-theme-val="lavender-dusk">
+              <div class="swatch-colors-preview">
+                <div class="swatch-color-bar" style="background:#F8F6FB;"></div>
+                <div class="swatch-color-bar" style="background:#B368C4;"></div>
+                <div class="swatch-color-bar" style="background:#24182D;"></div>
+              </div>
+              <span class="theme-swatch-name">Lavender Dusk</span>
+            </button>
+
+            <button class="theme-swatch-btn" data-theme-val="peach-cream">
+              <div class="swatch-colors-preview">
+                <div class="swatch-color-bar" style="background:#FFF8F4;"></div>
+                <div class="swatch-color-bar" style="background:#F27D60;"></div>
+                <div class="swatch-color-bar" style="background:#2E1B15;"></div>
+              </div>
+              <span class="theme-swatch-name">Peach Cream</span>
+            </button>
+
+            <button class="theme-swatch-btn" data-theme-val="cinema-noir-pink">
+              <div class="swatch-colors-preview">
+                <div class="swatch-color-bar" style="background:#0A0709;"></div>
+                <div class="swatch-color-bar" style="background:#FF2A85;"></div>
+                <div class="swatch-color-bar" style="background:#FFF2F6;"></div>
+              </div>
+              <span class="theme-swatch-name">Cinema Noir</span>
+            </button>
+          </div>
+
+          <!-- Custom Color Picker -->
+          <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <strong style="color:var(--ink);">Custom Accent Palette</strong>
+                <p style="font-size:0.85rem; color:var(--ink-faint); margin:0;">Regenerate tokens from your own primary &amp; accent hex values.</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggle-custom-colors">
+                <span class="slider-switch"></span>
+              </label>
+            </div>
+            <div id="custom-color-inputs" style="display:none; gap:1.5rem; margin-top:1rem; align-items:center;">
+              <div>
+                <label style="font-size:0.8rem; font-family:var(--font-mono); color:var(--ink-faint); display:block; margin-bottom:4px;">PRIMARY</label>
+                <input type="color" id="picker-primary" value="#E85D8A" style="width:60px; height:36px; cursor:pointer; border:1px solid var(--border); border-radius:4px;">
+              </div>
+              <div>
+                <label style="font-size:0.8rem; font-family:var(--font-mono); color:var(--ink-faint); display:block; margin-bottom:4px;">ACCENT</label>
+                <input type="color" id="picker-accent" value="#FF9BB8" style="width:60px; height:36px; cursor:pointer; border:1px solid var(--border); border-radius:4px;">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Appearance & Typography -->
+        <section class="settings-card">
+          <h2 class="settings-card-title">Appearance &amp; Typography</h2>
+          <p class="settings-card-desc">Adjust font scale, display serif pairings, and UI corner geometry.</p>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Display Mode</div>
+              <div class="setting-help">Follow system preferences or force dark mode.</div>
+            </div>
+            <select id="select-mode" style="padding:6px 12px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--surface); color:var(--ink);">
+              <option value="light">Light Mode</option>
+              <option value="dark">Dark (Midnight)</option>
+              <option value="auto">Auto (Match System)</option>
+            </select>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Typography Pairing</div>
+              <div class="setting-help">Curated serif and grotesk combinations.</div>
+            </div>
+            <select id="select-font-preset" style="padding:6px 12px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--surface); color:var(--ink);">
+              <option value="default">Playfair Display + Plus Jakarta Sans</option>
+              <option value="editorial-garamond">Cormorant Garamond + Plus Jakarta</option>
+              <option value="modern">Modern Grotesk Everywhere</option>
+            </select>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Base Font Scale</div>
+              <div class="setting-help">Scale body reading sizes comfortably.</div>
+            </div>
+            <select id="select-font-size" style="padding:6px 12px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--surface); color:var(--ink);">
+              <option value="small">Small (14px base)</option>
+              <option value="medium" selected>Standard (16px base)</option>
+              <option value="large">Large (18px base)</option>
+              <option value="xlarge">Extra Large (20px base)</option>
+            </select>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Corner Radius Geometry</div>
+              <div class="setting-help">Cards and buttons border radius style.</div>
+            </div>
+            <select id="select-radius" style="padding:6px 12px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--surface); color:var(--ink);">
+              <option value="soft" selected>Soft Luxury (16px / 24px)</option>
+              <option value="round">Pill / Organic Round (36px)</option>
+              <option value="sharp">Sharp Architectural (0px)</option>
+            </select>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Procedural Film Grain</div>
+              <div class="setting-help">Subtle 4.5% SVG fractal noise overlay.</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-grain" checked>
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+        </section>
+
+        <!-- 3. Motion & Transitions -->
+        <section class="settings-card">
+          <h2 class="settings-card-title">Motion &amp; Interaction</h2>
+          <p class="settings-card-desc">Fine-tune kinetic fluidity, custom cursor, and smooth page wipes.</p>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Smooth Scroll (Lenis)</div>
+              <div class="setting-help">Inertial physics scrolling synced with GSAP.</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-smooth-scroll" checked>
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Custom Dual Cursor</div>
+              <div class="setting-help">Magnetic lagging ring with contextual labels.</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-cursor" checked>
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Page Curtain Wipe</div>
+              <div class="setting-help">Rose curtain transition with typographic reveal.</div>
+            </div>
+            <select id="select-transition-style" style="padding:6px 12px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--surface); color:var(--ink);">
+              <option value="curtain" selected>Curtain Wipe</option>
+              <option value="none">Instant (No Animation)</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- 4. Falling Petals Physics -->
+        <section class="settings-card" id="petals">
+          <h2 class="settings-card-title">Falling Petals Physics Engine</h2>
+          <p class="settings-card-desc">Configure the botanical canvas layer running in background.</p>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Enable Petals</div>
+              <div class="setting-help">Toggle the full-screen canvas particle layer.</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-petals" checked>
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Petal Density</div>
+              <div class="setting-help">Number of concurrent active sakura petals.</div>
+            </div>
+            <select id="select-petals-density" style="padding:6px 12px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--surface); color:var(--ink);">
+              <option value="low">Gentle (25 petals)</option>
+              <option value="medium" selected>Balanced (45 petals)</option>
+              <option value="high">Blossom Storm (75 petals)</option>
+            </select>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Interactive Mouse Repulsion</div>
+              <div class="setting-help">Petals gently drift away from your cursor.</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-petals-mouse" checked>
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Restrict to Home Page</div>
+              <div class="setting-help">Run petals exclusively on the landing page.</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-petals-home">
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+        </section>
+
+        <!-- 5. Accessibility & Reading -->
+        <section class="settings-card" id="reading">
+          <h2 class="settings-card-title">Reading &amp; Accessibility</h2>
+          <p class="settings-card-desc">Modes tailored for comfortable, inclusive reading.</p>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">Dyslexia-Friendly Type</div>
+              <div class="setting-help">Use OpenDyslexic / heavy-weighted bottom font.</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-dyslexia">
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label">High Contrast Borders</div>
+              <div class="setting-help">Enhance hairline borders and contrast ratios.</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-high-contrast">
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+        </section>
+      </div>
+
+      <!-- Live Sticky Preview Card -->
+      <aside>
+        <div class="settings-preview-sticky">
+          <div class="section-eyebrow">Live Component Preview</div>
+          <div style="font-family:var(--font-display); font-size:1.6rem; font-weight:700; color:var(--ink);" id="preview-heading">
+            Previewing Monograph
+          </div>
+          <p style="font-size:0.95rem; color:var(--ink-muted);" id="preview-body">
+            This card responds instantaneously to your typography scale, color palette, and corner geometry choices.
+          </p>
+
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span class="chip">Science &amp; Grit</span>
+            <span class="chip">★ 9.8 / 10</span>
+          </div>
+
+          <div style="display:flex; gap:0.75rem; margin-top:1rem;">
+            <button class="btn btn-primary" style="flex:1;">Primary Action</button>
+            <button class="btn btn-outline">Outline</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-wordmark">NEOMA</div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4 style="font-family:var(--font-display); font-size:1.5rem; margin-bottom:0.5rem;" data-personal="site-title">Neoma</h4>
+          <p>A Class 10 school cinema monograph by Supriya.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="films.html">Film Archive</a></li>
+            <li><a href="about.html">About &amp; Story</a></li>
+            <li><a href="settings.html">Settings</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Quick Settings</div>
+          <ul class="footer-links">
+            <li><a href="#themes">Theme Swatches</a></li>
+            <li><a href="#petals">Petal Density</a></li>
+            <li><a href="#reading">Reading Mode</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div>© 2026 Neoma · Pure vanilla code.</div>
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <button class="had-fun-btn" id="btn-had-fun" aria-label="Had Fun?">
+          <span>Had Fun? 🌸</span>
+        </button>
+        <button class="back-to-top-btn" aria-label="Back to top">
+          <span>Back to Top</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core App Init -->
+  <script type="module" src="js/main.js"></script>
+
+  <!-- Page Logic Script -->
+  <script type="module">
+    import { SettingsManager } from "./js/settings.js";
+
+    function setupSettingsPage() {
+      const settingsManager = (window.ppApp && window.ppApp.settings) || window.ppSettings || new SettingsManager();
+      const s = settingsManager.settings;
+
+      // 1. Theme Swatches
+      const swatchBtns = document.querySelectorAll(".theme-swatch-btn");
+      function syncSwatches(activeTheme) {
+        swatchBtns.forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.themeVal === activeTheme);
+        });
+      }
+      syncSwatches(s.theme);
+
+      swatchBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          syncSwatches(btn.dataset.themeVal);
+          settingsManager.set("theme", btn.dataset.themeVal);
+        });
+      });
+
+      // Custom Color Picker
+      const toggleCustom = document.getElementById("toggle-custom-colors");
+      const customInputs = document.getElementById("custom-color-inputs");
+      const pickerPrimary = document.getElementById("picker-primary");
+      const pickerAccent = document.getElementById("picker-accent");
+
+      if (toggleCustom && customInputs && pickerPrimary && pickerAccent) {
+        toggleCustom.checked = Boolean(s.isCustomColorActive);
+        customInputs.style.display = s.isCustomColorActive ? "flex" : "none";
+        pickerPrimary.value = s.customPrimary || "#E85D8A";
+        pickerAccent.value = s.customAccent || "#FF9BB8";
+
+        toggleCustom.addEventListener("change", (e) => {
+          const active = e.target.checked;
+          customInputs.style.display = active ? "flex" : "none";
+          settingsManager.set("isCustomColorActive", active);
+        });
+
+        pickerPrimary.addEventListener("input", (e) => {
+          settingsManager.set("customPrimary", e.target.value);
+        });
+        pickerAccent.addEventListener("input", (e) => {
+          settingsManager.set("customAccent", e.target.value);
+        });
+      }
+
+      // 2. Selects & Toggles
+      const selectMode = document.getElementById("select-mode");
+      if (selectMode) {
+        selectMode.value = s.mode;
+        selectMode.addEventListener("change", (e) => settingsManager.set("mode", e.target.value));
+      }
+
+      const selectFontPreset = document.getElementById("select-font-preset");
+      if (selectFontPreset) {
+        selectFontPreset.value = s.fontPreset;
+        selectFontPreset.addEventListener("change", (e) => settingsManager.set("fontPreset", e.target.value));
+      }
+
+      const selectFontSize = document.getElementById("select-font-size");
+      if (selectFontSize) {
+        selectFontSize.value = s.fontSize;
+        selectFontSize.addEventListener("change", (e) => settingsManager.set("fontSize", e.target.value));
+      }
+
+      const selectRadius = document.getElementById("select-radius");
+      if (selectRadius) {
+        selectRadius.value = s.radius;
+        selectRadius.addEventListener("change", (e) => settingsManager.set("radius", e.target.value));
+      }
+
+      const toggleGrain = document.getElementById("toggle-grain");
+      if (toggleGrain) {
+        toggleGrain.checked = Boolean(s.grain);
+        toggleGrain.addEventListener("change", (e) => settingsManager.set("grain", e.target.checked));
+      }
+
+      const toggleSmooth = document.getElementById("toggle-smooth-scroll");
+      if (toggleSmooth) {
+        toggleSmooth.checked = Boolean(s.smoothScroll);
+        toggleSmooth.addEventListener("change", (e) => settingsManager.set("smoothScroll", e.target.checked));
+      }
+
+      const toggleCursor = document.getElementById("toggle-cursor");
+      if (toggleCursor) {
+        toggleCursor.checked = Boolean(s.customCursor);
+        toggleCursor.addEventListener("change", (e) => settingsManager.set("customCursor", e.target.checked));
+      }
+
+      const selectTransition = document.getElementById("select-transition-style");
+      if (selectTransition) {
+        selectTransition.value = s.transitionStyle;
+        selectTransition.addEventListener("change", (e) => settingsManager.set("transitionStyle", e.target.value));
+      }
+
+      const togglePetals = document.getElementById("toggle-petals");
+      if (togglePetals) {
+        togglePetals.checked = Boolean(s.petalsEnabled);
+        togglePetals.addEventListener("change", (e) => settingsManager.set("petalsEnabled", e.target.checked));
+      }
+
+      const selectDensity = document.getElementById("select-petals-density");
+      if (selectDensity) {
+        selectDensity.value = s.petalsDensity;
+        selectDensity.addEventListener("change", (e) => settingsManager.set("petalsDensity", e.target.value));
+      }
+
+      const togglePetalsMouse = document.getElementById("toggle-petals-mouse");
+      if (togglePetalsMouse) {
+        togglePetalsMouse.checked = Boolean(s.petalsMouse);
+        togglePetalsMouse.addEventListener("change", (e) => settingsManager.set("petalsMouse", e.target.checked));
+      }
+
+      const togglePetalsHome = document.getElementById("toggle-petals-home");
+      if (togglePetalsHome) {
+        togglePetalsHome.checked = Boolean(s.petalsOnlyHome);
+        togglePetalsHome.addEventListener("change", (e) => settingsManager.set("petalsOnlyHome", e.target.checked));
+      }
+
+      const toggleDyslexia = document.getElementById("toggle-dyslexia");
+      if (toggleDyslexia) {
+        toggleDyslexia.checked = Boolean(s.dyslexiaFont);
+        toggleDyslexia.addEventListener("change", (e) => settingsManager.set("dyslexiaFont", e.target.checked));
+      }
+
+      const toggleContrast = document.getElementById("toggle-high-contrast");
+      if (toggleContrast) {
+        toggleContrast.checked = Boolean(s.highContrast);
+        toggleContrast.addEventListener("change", (e) => settingsManager.set("highContrast", e.target.checked));
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setupSettingsPage);
+    } else {
+      setupSettingsPage();
+    }
+  </script>
+</body>
+</html>
+

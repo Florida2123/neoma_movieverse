@@ -1,0 +1,262 @@
+/* ==========================================================================
+   THEMES.CSS — Petal & Projector Visual Themes
+   Blush (Default), Midnight Rose, Sakura, Rose Gold, Lavender Dusk, Peach Cream, Cinema Noir Pink
+   ========================================================================== */
+
+/* 0. Blush (Default Light Luxury) */
+[data-theme="blush"] {
+  --bg: #FFF5F7;
+  --bg-subtle: #FDF0F3;
+  --surface: #FFFFFF;
+  --surface-card: rgba(255, 255, 255, 0.82);
+  --surface-elevated: #FFFFFF;
+  --surface-hover: rgba(255, 245, 248, 0.95);
+  --ink: #2A1420;
+  --ink-rgb: 42, 20, 32;
+  --ink-muted: #6D4F61;
+  --ink-faint: #A7899B;
+  --ink-inverse: #FFF5F7;
+
+  --primary: #E85D8A;
+  --primary-rgb: 232, 93, 138;
+  --primary-soft: #FCE4EC;
+  --accent: #FF9BB8;
+  --deep: #8E2C57;
+  --gold: #E9B872;
+  --gold-soft: rgba(233, 184, 114, 0.2);
+
+  --border: rgba(232, 93, 138, 0.16);
+  --border-strong: rgba(232, 93, 138, 0.32);
+  --border-focus: rgba(232, 93, 138, 0.6);
+
+  --shadow-sm: 0 2px 10px rgba(42, 20, 32, 0.04);
+  --shadow-md: 0 10px 30px rgba(42, 20, 32, 0.07);
+  --shadow-lg: 0 20px 50px rgba(42, 20, 32, 0.12);
+  --shadow-xl: 0 30px 70px rgba(232, 93, 138, 0.18);
+  --shadow-glow: 0 0 35px rgba(232, 93, 138, 0.35);
+}
+
+/* 1. Midnight Rose (Dark / Velvet Cinema) */
+[data-theme="midnight-rose"],
+[data-theme="auto"].dark-theme {
+  --bg: #14080F;
+  --bg-subtle: #1C0C16;
+  --surface: #1E0D17;
+  --surface-card: rgba(32, 14, 25, 0.82);
+  --surface-elevated: #26111E;
+  --surface-hover: rgba(48, 20, 36, 0.95);
+  --ink: #FDEFF3;
+  --ink-rgb: 253, 239, 243;
+  --ink-muted: #CFAFC0;
+  --ink-faint: #80566F;
+  --ink-inverse: #14080F;
+
+  --primary: #F06D9A;
+  --primary-rgb: 240, 109, 154;
+  --primary-soft: #381524;
+  --accent: #FFAAC2;
+  --deep: #FF4D88;
+  --gold: #F5CE85;
+  --gold-soft: rgba(245, 206, 133, 0.25);
+
+  --border: rgba(240, 109, 154, 0.2);
+  --border-strong: rgba(240, 109, 154, 0.38);
+  --border-focus: rgba(240, 109, 154, 0.7);
+
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.7);
+  --shadow-xl: 0 30px 70px rgba(240, 109, 154, 0.22);
+  --shadow-glow: 0 0 40px rgba(240, 109, 154, 0.45);
+}
+
+/* 2. Sakura (Spring Cherry Blossom) */
+[data-theme="sakura"] {
+  --bg: #FDF7F8;
+  --bg-subtle: #FAF0F3;
+  --surface: #FFFFFF;
+  --surface-card: rgba(255, 255, 255, 0.85);
+  --surface-elevated: #FFFFFF;
+  --surface-hover: #FFF1F5;
+  --ink: #2E1823;
+  --ink-rgb: 46, 24, 35;
+  --ink-muted: #724E5E;
+  --ink-faint: #AC8A9A;
+  --ink-inverse: #FDF7F8;
+
+  --primary: #F48FB1;
+  --primary-rgb: 244, 143, 177;
+  --primary-soft: #FDE8EF;
+  --accent: #F8BBD0;
+  --deep: #AD1457;
+  --gold: #F6D3B3;
+  --gold-soft: rgba(246, 211, 179, 0.25);
+
+  --border: rgba(244, 143, 177, 0.22);
+  --border-strong: rgba(244, 143, 177, 0.4);
+  --border-focus: rgba(244, 143, 177, 0.7);
+}
+
+/* 3. Rose Gold (Warm Metallic Radiance) */
+[data-theme="rose-gold"] {
+  --bg: #FAF5F3;
+  --bg-subtle: #F5EDE9;
+  --surface: #FFFFFF;
+  --surface-card: rgba(255, 255, 255, 0.86);
+  --surface-elevated: #FFFFFF;
+  --surface-hover: #F8F0EC;
+  --ink: #2B1D19;
+  --ink-rgb: 43, 29, 25;
+  --ink-muted: #6E534B;
+  --ink-faint: #A88F88;
+  --ink-inverse: #FAF5F3;
+
+  --primary: #D47A6A;
+  --primary-rgb: 212, 122, 106;
+  --primary-soft: #F8E7E3;
+  --accent: #E8A89A;
+  --deep: #944033;
+  --gold: #E5B27D;
+  --gold-soft: rgba(229, 178, 125, 0.25);
+
+  --border: rgba(212, 122, 106, 0.22);
+  --border-strong: rgba(212, 122, 106, 0.4);
+  --border-focus: rgba(212, 122, 106, 0.7);
+}
+
+/* 4. Lavender Dusk (Misty Twilight Violet) */
+[data-theme="lavender-dusk"] {
+  --bg: #F8F6FB;
+  --bg-subtle: #F0ECF6;
+  --surface: #FFFFFF;
+  --surface-card: rgba(255, 255, 255, 0.85);
+  --surface-elevated: #FFFFFF;
+  --surface-hover: #F3EEF9;
+  --ink: #24182D;
+  --ink-rgb: 36, 24, 45;
+  --ink-muted: #604E72;
+  --ink-faint: #9887AC;
+  --ink-inverse: #F8F6FB;
+
+  --primary: #B368C4;
+  --primary-rgb: 179, 104, 196;
+  --primary-soft: #F5E6F8;
+  --accent: #D7A6E6;
+  --deep: #6D2E7C;
+  --gold: #E8C97E;
+  --gold-soft: rgba(232, 201, 126, 0.25);
+
+  --border: rgba(179, 104, 196, 0.22);
+  --border-strong: rgba(179, 104, 196, 0.4);
+  --border-focus: rgba(179, 104, 196, 0.7);
+}
+
+/* 5. Peach Cream (Sunlit Apricot Silk) */
+[data-theme="peach-cream"] {
+  --bg: #FFF8F4;
+  --bg-subtle: #FDF0E8;
+  --surface: #FFFFFF;
+  --surface-card: rgba(255, 255, 255, 0.86);
+  --surface-elevated: #FFFFFF;
+  --surface-hover: #FFF1E8;
+  --ink: #2E1B15;
+  --ink-rgb: 46, 27, 21;
+  --ink-muted: #735146;
+  --ink-faint: #AC8D83;
+  --ink-inverse: #FFF8F4;
+
+  --primary: #F27D60;
+  --primary-rgb: 242, 125, 96;
+  --primary-soft: #FEECE7;
+  --accent: #F9AB97;
+  --deep: #A33A20;
+  --gold: #F3CA7E;
+  --gold-soft: rgba(243, 202, 126, 0.25);
+
+  --border: rgba(242, 125, 96, 0.22);
+  --border-strong: rgba(242, 125, 96, 0.4);
+  --border-focus: rgba(242, 125, 96, 0.7);
+}
+
+/* 6. Cinema Noir Pink (Black Velour & Hot Neon) */
+[data-theme="cinema-noir-pink"] {
+  --bg: #0A0709;
+  --bg-subtle: #120D11;
+  --surface: #150F14;
+  --surface-card: rgba(26, 17, 24, 0.88);
+  --surface-elevated: #22141F;
+  --surface-hover: rgba(45, 20, 38, 0.95);
+  --ink: #FFF2F6;
+  --ink-rgb: 255, 242, 246;
+  --ink-muted: #DDB8C8;
+  --ink-faint: #8E5A74;
+  --ink-inverse: #0A0709;
+
+  --primary: #FF2A85;
+  --primary-rgb: 255, 42, 133;
+  --primary-soft: #38071E;
+  --accent: #FF66AA;
+  --deep: #A6004B;
+  --gold: #FFD166;
+  --gold-soft: rgba(255, 209, 102, 0.25);
+
+  --border: rgba(255, 42, 133, 0.25);
+  --border-strong: rgba(255, 42, 133, 0.5);
+  --border-focus: rgba(255, 42, 133, 0.85);
+
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.75);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.9);
+  --shadow-xl: 0 30px 70px rgba(255, 42, 133, 0.3);
+  --shadow-glow: 0 0 50px rgba(255, 42, 133, 0.6);
+}
+
+/* Font Pairing Variations */
+[data-font-preset="modern"] {
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+[data-font-preset="editorial-garamond"] {
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Font Size Scaling */
+[data-font-size="small"] { font-size: 14px; }
+[data-font-size="medium"] { font-size: 16px; }
+[data-font-size="large"] { font-size: 18px; }
+[data-font-size="xlarge"] { font-size: 20px; }
+
+/* Corner Radius Modes */
+[data-radius="sharp"] {
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-pill: 0px;
+}
+[data-radius="round"] {
+  --radius-xs: 8px;
+  --radius-sm: 14px;
+  --radius-md: 24px;
+  --radius-lg: 36px;
+  --radius-xl: 48px;
+  --radius-pill: 9999px;
+}
+
+/* Dyslexia-friendly Font Mode */
+[data-dyslexia="true"] {
+  --font-body: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+  line-height: 1.8 !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* High Contrast Mode */
+[data-contrast="high"] {
+  --border: var(--ink) !important;
+  --border-strong: var(--ink) !important;
+  --ink-muted: var(--ink) !important;
+}
+

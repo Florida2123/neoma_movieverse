@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blush">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Study — Neoma</title>
+  <meta name="description" content="Cinematic summary, personal review, and reflection from the Neoma monograph.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <!-- CDNs (Pinned versions) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/themes.css">
+
+  <!-- JSON-LD Structured Data Schema placeholder -->
+  <script type="application/ld+json" id="movie-schema"></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand-link" aria-label="Neoma Home">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(72 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(144 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(216 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(288 12 12)" opacity="0.8" />
+        </svg>
+        <span data-personal="site-title">Neoma</span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="films.html" class="nav-link">Film Archive</a></li>
+          <li><a href="about.html" class="nav-link">About &amp; Story</a></li>
+          <li>
+            <a href="settings.html" class="nav-link nav-icon-link" aria-label="Settings" title="Settings">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="films.html" class="btn btn-outline" style="padding: 0.5rem 1.15rem; font-size: 0.85rem;">← All Films</a>
+        <button class="menu-toggle-btn" aria-label="Open mobile menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <button class="close-btn" aria-label="Close mobile navigation">✕</button>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="films.html">Film Archive (14)</a></li>
+      <li><a href="about.html">About &amp; Story</a></li>
+      <li><a href="settings.html">Preferences &amp; Themes</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+    <!-- Movie Hero Section -->
+    <section class="movie-hero" id="sec-overview">
+      <img id="movie-hero-backdrop" src="" alt="Backdrop" class="movie-backdrop">
+      <div class="movie-hero-overlay"></div>
+      <div class="container movie-hero-content">
+        <div class="movie-meta-chips" id="movie-meta-chips">
+          <!-- Dynamic meta chips -->
+        </div>
+        <h1 class="movie-title" id="movie-title">Film Title</h1>
+        <p class="movie-tagline" id="movie-tagline">Film Tagline</p>
+      </div>
+    </section>
+
+    <!-- Sticky Section Subnav -->
+    <nav class="movie-subnav" aria-label="Film section navigation">
+      <div class="container">
+        <ul class="movie-subnav-list">
+          <li><a href="#sec-overview" class="movie-subnav-link active">Overview</a></li>
+          <li><a href="#sec-summary" class="movie-subnav-link">Summary</a></li>
+          <li><a href="#sec-review" class="movie-subnav-link">Personal Review</a></li>
+          <li><a href="#sec-gallery" class="movie-subnav-link">Visual Stills</a></li>
+          <li><a href="#sec-trailer" class="movie-subnav-link">Trailer</a></li>
+          <li><a href="#sec-more" class="movie-subnav-link">Recommendations</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content Body Split -->
+    <div class="container movie-body-layout">
+      <!-- Sticky Sidebar Metadata -->
+      <aside class="movie-sidebar">
+        <div class="movie-sidebar-card">
+          <div class="sidebar-poster" id="movie-sidebar-poster">
+            <!-- Poster -->
+          </div>
+          <div class="sidebar-info-row">
+            <div class="sidebar-info-label">Director</div>
+            <div class="sidebar-info-val" id="movie-director">Director Name</div>
+          </div>
+          <div class="sidebar-meta-grid">
+            <div class="sidebar-info-row">
+              <div class="sidebar-info-label">Release Year</div>
+              <div class="sidebar-info-val" id="movie-year">Year</div>
+            </div>
+            <div class="sidebar-info-row">
+              <div class="sidebar-info-label">Runtime</div>
+              <div class="sidebar-info-val" id="movie-runtime">Runtime</div>
+            </div>
+          </div>
+          <div class="sidebar-info-row">
+            <div class="sidebar-info-label">Featured Cast</div>
+            <div class="sidebar-info-val" id="movie-cast">Cast list</div>
+          </div>
+          <div class="sidebar-rating-row">
+            <div class="sidebar-info-label">Curator Rating</div>
+            <div class="sidebar-rating-val" id="movie-rating-val">9.8 / 10</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Reading Article Column -->
+      <div class="movie-main-content">
+        <!-- Section: Summary -->
+        <section class="movie-section" id="sec-summary">
+          <div class="section-eyebrow">Plot Synopsis &amp; Architecture</div>
+          <h2 class="section-heading">The Story Arc</h2>
+
+          <div class="summary-toolbar">
+            <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--ink-faint);">
+              Reading Time: <span id="reading-time">3 min</span>
+            </div>
+            <button class="btn btn-outline" id="btn-listen-summary" style="padding:0.4rem 1rem; font-size:0.82rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+              <span>Listen to Summary</span>
+            </button>
+          </div>
+
+          <div class="summary-paragraphs drop-cap" id="summary-paragraphs">
+            <!-- Paragraphs populated dynamically -->
+          </div>
+        </section>
+
+        <!-- Section: My Review -->
+        <section class="movie-section" id="sec-review">
+          <div class="section-eyebrow">Personal Journal Entry</div>
+          <h2 class="section-heading">What It Taught Us</h2>
+
+          <!-- Rating Metre Card -->
+          <div class="review-rating-block">
+            <div class="rating-circle-visual">
+              <svg width="100" height="100" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="42" fill="none" stroke="var(--border)" stroke-width="6" />
+                <circle id="rating-svg-circle" cx="50" cy="50" r="42" fill="none" stroke="var(--primary)" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264" style="transition: stroke-dashoffset 1.2s var(--ease-editorial);" />
+              </svg>
+              <div class="rating-circle-val" id="rating-circle-val">9.8</div>
+            </div>
+            <div style="flex:1;">
+              <h3 class="review-headline" id="review-headline">Review Headline</h3>
+              <p style="color:var(--ink-muted); margin:0;" id="review-body">Personal review text.</p>
+            </div>
+          </div>
+
+          <!-- Scene and Lesson Cards -->
+          <div class="review-cards-grid">
+            <div class="review-callout-card">
+              <div class="callout-icon">🎬</div>
+              <div class="callout-title">Favourite Scene</div>
+              <p style="color:var(--ink-muted); font-size:0.95rem; margin:0;" id="review-fav-scene">Scene description</p>
+            </div>
+            <div class="review-callout-card">
+              <div class="callout-icon">✨</div>
+              <div class="callout-title">The Enduring Lesson</div>
+              <p style="color:var(--ink-muted); font-size:0.95rem; margin:0;" id="review-lesson">Core lesson</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Gallery -->
+        <section class="movie-section" id="sec-gallery">
+          <div class="section-eyebrow">Visual Composition</div>
+          <h2 class="section-heading">Cinematography Stills</h2>
+          <p style="color:var(--ink-muted);">Click any still to enter full-screen lightbox exploration.</p>
+
+          <div class="movie-gallery-grid" id="movie-gallery">
+            <!-- Gallery items rendered dynamically -->
+          </div>
+        </section>
+
+        <!-- Section: Trailer -->
+        <section class="movie-section" id="sec-trailer">
+          <div class="section-eyebrow">Moving Images</div>
+          <h2 class="section-heading">Official Preview</h2>
+          <p style="color:var(--ink-muted);">Privacy-enhanced embed (`youtube-nocookie.com`). Background music pauses automatically.</p>
+
+          <div class="trailer-container" id="trailer-container">
+            <div class="trailer-poster-facade" id="trailer-facade">
+              <button class="trailer-play-trigger" aria-label="Play movie trailer">▶</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: More Films (Recommendations) -->
+        <section class="movie-section" id="sec-more" style="border-bottom:none;">
+          <div class="section-eyebrow">Continue Exploring</div>
+          <h2 class="section-heading">If You Loved This Film</h2>
+          <div class="archive-films-grid" id="similar-films-grid" style="padding:1rem 0;">
+            <!-- 3 similar films -->
+          </div>
+
+          <!-- Prev / Next Pagination -->
+          <nav class="movie-pagination-nav" aria-label="Previous and next movie">
+            <a href="#" id="prev-film-link" class="pagination-link">
+              <span style="font-size:1.5rem;">←</span>
+              <div>
+                <div class="pagination-label">Previous Monograph</div>
+                <div class="pagination-title" id="prev-film-title">Film</div>
+              </div>
+            </a>
+            <a href="#" id="next-film-link" class="pagination-link" style="text-align:right;">
+              <div>
+                <div class="pagination-label">Next Monograph</div>
+                <div class="pagination-title" id="next-film-title">Film</div>
+              </div>
+              <span style="font-size:1.5rem;">→</span>
+            </a>
+          </nav>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image gallery preview">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">✕</button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous still">‹</button>
+    <button class="lightbox-next" id="lightbox-next" aria-label="Next still">›</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Gallery preview" class="lightbox-img">
+      <div id="lightbox-caption" class="lightbox-caption">Caption text</div>
+    </div>
+  </div>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-wordmark">NEOMA</div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4 style="font-family:var(--font-display); font-size:1.5rem; margin-bottom:0.5rem;" data-personal="site-title">Neoma</h4>
+          <p>A Class 10 school cinema monograph by Supriya.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="films.html">Film Archive</a></li>
+            <li><a href="about.html">About &amp; Story</a></li>
+            <li><a href="settings.html">Settings</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Preferences</div>
+          <ul class="footer-links">
+            <li><a href="settings.html">Theme Settings</a></li>
+            <li><a href="settings.html">Audio Preferences</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div>© 2026 Neoma · Pure vanilla code.</div>
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <button class="had-fun-btn" id="btn-had-fun" aria-label="Had Fun?">
+          <span>Had Fun? 🌸</span>
+        </button>
+        <button class="back-to-top-btn" aria-label="Back to top">
+          <span>Back to Top</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page Logic Script -->
+  <script type="module">
+    import {
+      movies,
+      getMovieById,
+      generatePlaceholderPoster,
+      generatePlaceholderBackdrop,
+      generateGalleryPlaceholder
+    } from "./js/movies.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Parse URL Parameter ?id=xxx (Default to 'walle')
+      const params = new URLSearchParams(window.location.search);
+      const filmId = params.get("id") || "walle";
+      const movie = getMovieById(filmId) || movies[0];
+
+      // Update Document Title & SEO
+      document.title = `${movie.title} (${movie.year}) — Neoma`;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.content = movie.summary.slice(0, 160);
+
+      // Structured Data (JSON-LD)
+      const schemaEl = document.getElementById("movie-schema");
+      if (schemaEl) {
+        const schema = {
+          "@context": "https://schema.org",
+          "@type": "Review",
+          "itemReviewed": {
+            "@type": "Movie",
+            "name": movie.title,
+            "dateCreated": movie.year.toString(),
+            "director": { "@type": "Person", "name": movie.director }
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": movie.review.rating,
+            "bestRating": "10"
+          },
+          "author": { "@type": "Person", "name": "Supriya" },
+          "reviewBody": movie.review.body
+        };
+        schemaEl.textContent = JSON.stringify(schema);
+      }
+
+      // Per-film Accent Coloring
+      if (movie.palette && movie.palette.primary) {
+        document.documentElement.style.setProperty("--primary", movie.palette.primary);
+        document.documentElement.style.setProperty("--accent", movie.palette.accent);
+      }
+
+      // 2. Render Hero & Meta
+      const heroBackdrop = document.getElementById("movie-hero-backdrop");
+      const heroTitle = document.getElementById("movie-title");
+      const heroTagline = document.getElementById("movie-tagline");
+      const metaChips = document.getElementById("movie-meta-chips");
+
+      const backdropSvg = generatePlaceholderBackdrop(movie.title, movie.palette.primary, movie.palette.accent);
+      heroBackdrop.src = movie.backdrop || backdropSvg;
+      heroBackdrop.onerror = () => { heroBackdrop.src = backdropSvg; };
+      heroTitle.textContent = movie.title;
+      heroTagline.textContent = `“${movie.tagline}”`;
+
+      metaChips.innerHTML = `
+        <span class="chip">${movie.year}</span>
+        <span class="chip">${movie.runtime}</span>
+        ${movie.genres.map(g => `<span class="chip">${g}</span>`).join("")}
+      `;
+
+      // 3. Render Sidebar
+      const sidebarPoster = document.getElementById("movie-sidebar-poster");
+      const posterSrc = generatePlaceholderPoster(movie.title, movie.year, movie.director, movie.palette.primary, movie.palette.accent);
+      sidebarPoster.innerHTML = `<img src="${movie.poster || posterSrc}" onerror="this.src='${posterSrc}'" alt="${movie.title} Poster" style="width:100%;height:100%;object-fit:cover;">`;
+
+      document.getElementById("movie-director").textContent = movie.director;
+      document.getElementById("movie-year").textContent = movie.year;
+      document.getElementById("movie-runtime").textContent = movie.runtime;
+      document.getElementById("movie-cast").textContent = movie.cast.join(", ");
+      document.getElementById("movie-rating-val").textContent = `${movie.review.rating} / 10`;
+
+      // 4. Render Summary & Reading Time
+      const summaryContainer = document.getElementById("summary-paragraphs");
+      const paragraphs = movie.summary.split("\n\n");
+      summaryContainer.innerHTML = paragraphs.map(p => `<p>${p}</p>`).join("");
+
+      const wordCount = movie.summary.split(/\s+/).length;
+      const readMin = Math.max(1, Math.ceil(wordCount / 180));
+      document.getElementById("reading-time").textContent = `${readMin} min read`;
+
+      // Narration Button for Summary
+      const listenBtn = document.getElementById("btn-listen-summary");
+      if (listenBtn) {
+        listenBtn.addEventListener("click", () => {
+          if (window.ppApp && window.ppApp.narrator) {
+            const pEls = summaryContainer.querySelectorAll("p");
+            window.ppApp.narrator.speakParagraphs(Array.from(pEls), `${movie.title} Summary`);
+          }
+        });
+      }
+
+      // 5. Render Review & Rating Ring
+      document.getElementById("rating-circle-val").textContent = movie.review.rating;
+      document.getElementById("review-headline").textContent = `“${movie.review.headline}”`;
+      document.getElementById("review-body").textContent = movie.review.body;
+      document.getElementById("review-fav-scene").textContent = movie.review.favouriteScene;
+      document.getElementById("review-lesson").textContent = movie.review.whatItTaughtMe;
+
+      // Animate Rating Circle
+      setTimeout(() => {
+        const circle = document.getElementById("rating-svg-circle");
+        if (circle) {
+          const circumference = 2 * Math.PI * 42; // ~264
+          const offset = circumference - (movie.review.rating / 10) * circumference;
+          circle.style.strokeDashoffset = offset;
+        }
+      }, 300);
+
+      // 6. Render Stills Gallery
+      const galleryGrid = document.getElementById("movie-gallery");
+      galleryGrid.innerHTML = "";
+      movie.gallery.forEach((still, idx) => {
+        const item = document.createElement("div");
+        item.className = "gallery-item";
+        item.setAttribute("tabindex", "0");
+        item.setAttribute("role", "button");
+        item.setAttribute("aria-label", `View still: ${still.caption}`);
+
+        const stillFallback = generateGalleryPlaceholder(movie.title, idx, still.caption, movie.palette.primary);
+        item.innerHTML = `<img src="${still.src}" onerror="this.src='${stillFallback}'" alt="${still.caption}" loading="lazy">`;
+
+        item.addEventListener("click", () => openLightbox(idx));
+        item.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") openLightbox(idx);
+        });
+
+        galleryGrid.appendChild(item);
+      });
+
+      // Lightbox Logic
+      const modal = document.getElementById("lightbox-modal");
+      const modalImg = document.getElementById("lightbox-img");
+      const modalCaption = document.getElementById("lightbox-caption");
+      const closeBtn = document.getElementById("lightbox-close");
+      const prevBtn = document.getElementById("lightbox-prev");
+      const nextBtn = document.getElementById("lightbox-next");
+      let activeIndex = 0;
+
+      function openLightbox(index) {
+        activeIndex = index;
+        updateLightbox();
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      function updateLightbox() {
+        const still = movie.gallery[activeIndex];
+        const stillFallback = generateGalleryPlaceholder(movie.title, activeIndex, still.caption, movie.palette.primary);
+        modalImg.src = still.src || stillFallback;
+        modalImg.onerror = () => { modalImg.src = stillFallback; };
+        modalCaption.textContent = `${activeIndex + 1} / ${movie.gallery.length} — ${still.caption}`;
+      }
+
+      closeBtn.addEventListener("click", closeLightbox);
+      prevBtn.addEventListener("click", () => {
+        activeIndex = (activeIndex - 1 + movie.gallery.length) % movie.gallery.length;
+        updateLightbox();
+      });
+      nextBtn.addEventListener("click", () => {
+        activeIndex = (activeIndex + 1) % movie.gallery.length;
+        updateLightbox();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (!modal.classList.contains("active")) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") prevBtn.click();
+        if (e.key === "ArrowRight") nextBtn.click();
+      });
+
+      // 7. Render Trailer Embed
+      const trailerContainer = document.getElementById("trailer-container");
+      const facade = document.getElementById("trailer-facade");
+      const trailerBackdrop = movie.backdrop || backdropSvg;
+      facade.style.backgroundImage = `url('${trailerBackdrop}')`;
+
+      facade.addEventListener("click", () => {
+        // Lower ambient music volume
+        if (window.ppApp && window.ppApp.audio) {
+          window.ppApp.audio.duck(true);
+        }
+
+        trailerContainer.innerHTML = `
+          <iframe
+            class="trailer-iframe"
+            src="https://www.youtube-nocookie.com/embed/${movie.trailerYouTubeId}?autoplay=1&rel=0"
+            title="${movie.title} Official Trailer"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        `;
+      });
+
+      // 8. Render Recommendations & Prev/Next
+      const similarGrid = document.getElementById("similar-films-grid");
+      const similarMovies = (movie.similar || []).map(id => getMovieById(id)).filter(Boolean);
+
+      similarGrid.innerHTML = "";
+      similarMovies.slice(0, 3).forEach(sim => {
+        const simCard = document.createElement("a");
+        simCard.href = `movie.html?id=${sim.id}`;
+        simCard.className = "film-card";
+        simCard.setAttribute("data-transition-title", sim.title);
+
+        const simPosterFallback = generatePlaceholderPoster(sim.title, sim.year, sim.director, sim.palette.primary, sim.palette.accent);
+        const simPoster = sim.poster || simPosterFallback;
+        simCard.innerHTML = `
+          <div class="film-card-media">
+            <img src="${simPoster}" onerror="this.src='${simPosterFallback}'" alt="${sim.title} Poster" class="film-card-img" loading="lazy">
+            <div class="film-card-badge">★ ${sim.review.rating}</div>
+          </div>
+          <div class="film-card-content">
+            <div class="film-card-collection">${sim.genres[0].toUpperCase()}</div>
+            <h3 class="film-card-title">${sim.title}</h3>
+            <div class="film-card-footer">
+              <span>${sim.year}</span>
+              <span>Open Study ↗</span>
+            </div>
+          </div>
+        `;
+        similarGrid.appendChild(simCard);
+      });
+
+      // Prev & Next Film Navigation
+      const currentIndex = movies.findIndex(m => m.id === movie.id);
+      const prevMovie = movies[(currentIndex - 1 + movies.length) % movies.length];
+      const nextMovie = movies[(currentIndex + 1) % movies.length];
+
+      const prevLink = document.getElementById("prev-film-link");
+      const nextLink = document.getElementById("next-film-link");
+      prevLink.href = `movie.html?id=${prevMovie.id}`;
+      prevLink.setAttribute("data-transition-title", prevMovie.title);
+      document.getElementById("prev-film-title").textContent = prevMovie.title;
+
+      nextLink.href = `movie.html?id=${nextMovie.id}`;
+      nextLink.setAttribute("data-transition-title", nextMovie.title);
+      document.getElementById("next-film-title").textContent = nextMovie.title;
+
+      // 9. Sticky Subnav Active Tracking on Scroll
+      const subnavLinks = document.querySelectorAll(".movie-subnav-link");
+      const sections = document.querySelectorAll("main section[id]");
+
+      window.addEventListener("scroll", () => {
+        let currentSec = "";
+        sections.forEach(sec => {
+          const top = sec.offsetTop - 180;
+          if (window.scrollY >= top) {
+            currentSec = sec.getAttribute("id");
+          }
+        });
+
+        subnavLinks.forEach(link => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${currentSec}`) {
+            link.classList.add("active");
+          }
+        });
+      }, { passive: true });
+    });
+  </script>
+
+  <!-- Core App Init -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
+

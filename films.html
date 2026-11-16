@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blush">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film Archive — Neoma</title>
+  <meta name="description" content="Explore the full 14-film monograph collection with interactive filters, decade timelines, and genre studies.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <!-- CDNs (Pinned versions) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/themes.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand-link" aria-label="Neoma Home">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(72 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(144 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(216 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(288 12 12)" opacity="0.8" />
+        </svg>
+        <span data-personal="site-title">Neoma</span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="films.html" class="nav-link active">Film Archive</a></li>
+          <li><a href="about.html" class="nav-link">About &amp; Story</a></li>
+          <li>
+            <a href="settings.html" class="nav-link nav-icon-link" aria-label="Settings" title="Settings">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="about.html" class="btn btn-outline" style="padding: 0.5rem 1.15rem; font-size: 0.85rem;">About &amp; Story</a>
+        <button class="menu-toggle-btn" aria-label="Open mobile menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <button class="close-btn" aria-label="Close mobile navigation">✕</button>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="films.html" class="active">Film Archive (14)</a></li>
+      <li><a href="about.html">About &amp; Story</a></li>
+      <li><a href="settings.html">Preferences &amp; Themes</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+    <!-- Archive Header -->
+    <section class="archive-header">
+      <div class="container">
+        <div class="section-eyebrow">The Complete Monograph</div>
+        <h1 class="archive-title">Fourteen Films of Wonder</h1>
+        <p style="color:var(--ink-muted); max-width:650px;">
+          A curated archive of 14 films explored for my Class 10 project across science, resilience, and storytelling.
+        </p>
+
+        <!-- Search & Filter Controls -->
+        <div class="archive-controls">
+          <div class="archive-search-bar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--ink-faint);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="archive-search" class="archive-search-input" placeholder="Search by title, director, keyword..." aria-label="Search archive">
+          </div>
+
+          <div class="archive-filters-row">
+            <!-- Filter Pills -->
+            <div class="filter-pills" role="tablist" aria-label="Film genres filter">
+              <button class="filter-pill active" data-filter="all">All (14)</button>
+              <button class="filter-pill" data-filter="Sci-Fi">Sci-Fi</button>
+              <button class="filter-pill" data-filter="Drama">Drama</button>
+              <button class="filter-pill" data-filter="Animation">Animation</button>
+              <button class="filter-pill" data-filter="Biography">Biography</button>
+            </div>
+
+            <!-- View Layout Toggles -->
+            <div class="view-toggles" role="group" aria-label="Layout view mode">
+              <button class="view-btn active" id="btn-view-grid" title="Grid View">Grid</button>
+              <button class="view-btn" id="btn-view-list" title="List View">List</button>
+              <button class="view-btn" id="btn-view-timeline" title="Timeline View">Timeline</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Archive View -->
+    <section class="container">
+      <div id="results-count" style="margin-top:1.5rem; font-family:var(--font-mono); font-size:0.8rem; color:var(--ink-faint);" aria-live="polite">
+        Showing 14 of 14 films
+      </div>
+
+      <!-- Grid / List Container -->
+      <div class="archive-films-grid" id="films-grid">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Chronological Timeline View -->
+      <div class="archive-timeline-view" id="films-timeline">
+        <div class="timeline-line"></div>
+        <div id="timeline-items-container">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-wordmark">NEOMA</div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4 style="font-family:var(--font-display); font-size:1.5rem; margin-bottom:0.5rem;" data-personal="site-title">Neoma</h4>
+          <p>A Class 10 school cinema monograph by Supriya.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="films.html">Film Archive</a></li>
+            <li><a href="about.html">About &amp; Story</a></li>
+            <li><a href="settings.html">Settings</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Preferences</div>
+          <ul class="footer-links">
+            <li><a href="settings.html">Theme Customizer</a></li>
+            <li><a href="settings.html">Audio Preferences</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div>© 2026 Neoma · Pure vanilla code.</div>
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <button class="had-fun-btn" id="btn-had-fun" aria-label="Had Fun?">
+          <span>Had Fun? 🌸</span>
+        </button>
+        <button class="back-to-top-btn" aria-label="Back to top">
+          <span>Back to Top</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page Logic Script -->
+  <script type="module">
+    import { movies, generatePlaceholderPoster } from "./js/movies.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.getElementById("films-grid");
+      const timeline = document.getElementById("films-timeline");
+      const timelineContainer = document.getElementById("timeline-items-container");
+      const searchInput = document.getElementById("archive-search");
+      const filterPills = document.querySelectorAll(".filter-pills .filter-pill");
+      const countEl = document.getElementById("results-count");
+
+      const btnGrid = document.getElementById("btn-view-grid");
+      const btnList = document.getElementById("btn-view-list");
+      const btnTimeline = document.getElementById("btn-view-timeline");
+
+      let currentFilter = "all";
+      let currentQuery = "";
+      let currentView = "grid";
+
+      // Register GSAP Flip plugin
+      if (window.gsap && window.Flip) {
+        gsap.registerPlugin(Flip);
+      }
+
+      function getFilteredMovies() {
+        return movies.filter(movie => {
+          // Filter by genre
+          const matchesGenre = currentFilter === "all" || movie.genres.includes(currentFilter);
+
+          // Filter by search query
+          const q = currentQuery.toLowerCase().trim();
+          const matchesQuery = !q ||
+            movie.title.toLowerCase().includes(q) ||
+            movie.director.toLowerCase().includes(q) ||
+            movie.year.toString().includes(q) ||
+            movie.genres.some(g => g.toLowerCase().includes(q)) ||
+            movie.tagline.toLowerCase().includes(q);
+
+          return matchesGenre && matchesQuery;
+        });
+      }
+
+      function renderGrid() {
+        const filtered = getFilteredMovies();
+        countEl.textContent = `Showing ${filtered.length} of ${movies.length} films`;
+
+        // If Flip is available, record initial state
+        const state = (window.Flip && grid.children.length > 0) ? Flip.getState(grid.children) : null;
+
+        grid.innerHTML = "";
+
+        if (filtered.length === 0) {
+          grid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align:center; padding: 4rem 1rem; color:var(--ink-muted);">
+              <h3 style="font-family:var(--font-display); font-size:1.8rem; margin-bottom:0.5rem;">No films match your search</h3>
+              <p>Try clearing your filter or searching for another term like "space", "robot", or "music".</p>
+            </div>
+          `;
+          return;
+        }
+
+        filtered.forEach(movie => {
+          const card = document.createElement("a");
+          card.href = `movie.html?id=${movie.id}`;
+          card.className = "film-card";
+          card.setAttribute("data-id", movie.id);
+          card.setAttribute("data-transition-title", movie.title);
+
+          const posterSrc = generatePlaceholderPoster(movie.title, movie.year, movie.director, movie.palette.primary, movie.palette.accent);
+          const finalPoster = movie.poster || posterSrc;
+
+          card.innerHTML = `
+            <div class="film-card-media">
+              <img src="${finalPoster}" onerror="this.src='${posterSrc}'" alt="${movie.title} Poster" class="film-card-img" loading="lazy">
+              <div class="film-card-shine"></div>
+              <div class="film-card-badge">★ ${movie.review.rating}</div>
+            </div>
+            <div class="film-card-content">
+              <div class="film-card-collection">${movie.genres[0].toUpperCase()}</div>
+              <h3 class="film-card-title">${movie.title}</h3>
+              <p class="film-card-tagline">${movie.tagline}</p>
+              <div class="film-card-footer">
+                <span>${movie.year} · ${movie.runtime}</span>
+                <span>Open Study ↗</span>
+              </div>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+        // Animate grid reflow with GSAP Flip
+        if (state && window.Flip) {
+          Flip.from(state, {
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.02,
+            absolute: true
+          });
+        }
+      }
+
+      function renderTimeline() {
+        const sortedByYear = [...movies].sort((a, b) => a.year - b.year);
+        timelineContainer.innerHTML = "";
+
+        sortedByYear.forEach((movie, index) => {
+          const item = document.createElement("div");
+          item.className = "timeline-item";
+          const posterSrc = generatePlaceholderPoster(movie.title, movie.year, movie.director, movie.palette.primary, movie.palette.accent);
+
+          item.innerHTML = `
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-card-inner">
+                <a href="movie.html?id=${movie.id}" tabindex="-1" aria-hidden="true" style="flex-shrink:0;">
+                  <img src="${movie.poster || posterSrc}" onerror="this.src='${posterSrc}'" class="timeline-card-poster" alt="${movie.title} Poster">
+                </a>
+                <div class="timeline-card-body">
+                  <div class="timeline-card-year">${movie.year}</div>
+                  <h3 class="timeline-card-title"><a href="movie.html?id=${movie.id}">${movie.title}</a></h3>
+                  <div class="timeline-card-director">Directed by ${movie.director}</div>
+                  <p class="timeline-card-tagline">${movie.tagline}</p>
+                  <div class="timeline-card-actions">
+                    <a href="movie.html?id=${movie.id}" class="btn btn-outline" style="padding:0.4rem 0.9rem; font-size:0.8rem;">Read Review</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          timelineContainer.appendChild(item);
+        });
+      }
+
+      // Event Listeners
+      searchInput.addEventListener("input", (e) => {
+        currentQuery = e.target.value;
+        renderGrid();
+      });
+
+      filterPills.forEach(pill => {
+        pill.addEventListener("click", () => {
+          filterPills.forEach(p => p.classList.remove("active"));
+          pill.classList.add("active");
+          currentFilter = pill.dataset.filter;
+          renderGrid();
+        });
+      });
+
+      // View modes
+      btnGrid.addEventListener("click", () => {
+        currentView = "grid";
+        btnGrid.classList.add("active");
+        btnList.classList.remove("active");
+        btnTimeline.classList.remove("active");
+        grid.style.display = "grid";
+        grid.classList.remove("list-view");
+        timeline.style.display = "none";
+        renderGrid();
+      });
+
+      btnList.addEventListener("click", () => {
+        currentView = "list";
+        btnList.classList.add("active");
+        btnGrid.classList.remove("active");
+        btnTimeline.classList.remove("active");
+        grid.style.display = "grid";
+        grid.classList.add("list-view");
+        timeline.style.display = "none";
+        renderGrid();
+      });
+
+      btnTimeline.addEventListener("click", () => {
+        currentView = "timeline";
+        btnTimeline.classList.add("active");
+        btnGrid.classList.remove("active");
+        btnList.classList.remove("active");
+        grid.style.display = "none";
+        timeline.style.display = "block";
+        renderTimeline();
+      });
+
+      // Initial Render
+      renderGrid();
+    });
+  </script>
+
+  <!-- Core App Init -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
+

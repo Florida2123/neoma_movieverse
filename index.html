@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blush">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neoma — Class 10 School Project by Supriya</title>
+  <meta name="description" content="A Class 10 school cinema monograph by Supriya exploring 14 transformative films that teach science, courage, empathy, and the future.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Neoma — Class 10 School Project by Supriya">
+  <meta property="og:description" content="14 films that taught me to dream bigger. A Class 10 school cinema monograph.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Cormorant+Garamond:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+  <!-- CDNs (Pinned versions, defer) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script defer src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/themes.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Preloader Screen -->
+  <div id="preloader" class="preloader">
+    <svg class="preloader-flower" viewBox="0 0 100 100" fill="currentColor">
+      <path d="M50 20 C55 35 65 45 50 60 C35 45 45 35 50 20 Z" />
+      <path d="M50 20 C55 35 65 45 50 60 C35 45 45 35 50 20 Z" transform="rotate(72 50 50)" />
+      <path d="M50 20 C55 35 65 45 50 60 C35 45 45 35 50 20 Z" transform="rotate(144 50 50)" />
+      <path d="M50 20 C55 35 65 45 50 60 C35 45 45 35 50 20 Z" transform="rotate(216 50 50)" />
+      <path d="M50 20 C55 35 65 45 50 60 C35 45 45 35 50 20 Z" transform="rotate(288 50 50)" />
+      <circle cx="50" cy="50" r="10" fill="var(--gold)" />
+    </svg>
+    <div class="preloader-count">0</div>
+    <div class="preloader-text">Warming the Projector Bulb</div>
+    <div class="preloader-sound-choice">
+      <button class="btn btn-primary" id="preloader-enter-sound">Enter with Sound</button>
+      <button class="btn btn-outline" id="preloader-enter-quiet">Enter Quietly</button>
+    </div>
+  </div>
+
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand-link" aria-label="Neoma Home">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(72 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(144 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(216 12 12)" opacity="0.8" />
+          <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(288 12 12)" opacity="0.8" />
+        </svg>
+        <span data-personal="site-title">Neoma</span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="films.html" class="nav-link">Film Archive</a></li>
+          <li><a href="about.html" class="nav-link">About &amp; Story</a></li>
+          <li>
+            <a href="settings.html" class="nav-link nav-icon-link" aria-label="Settings" title="Settings">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="films.html" class="btn btn-outline" style="padding: 0.5rem 1.15rem; font-size: 0.85rem;">Browse 14 Films</a>
+        <button class="menu-toggle-btn" aria-label="Open mobile menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <button class="close-btn" aria-label="Close mobile navigation">✕</button>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="films.html">Film Archive (14)</a></li>
+      <li><a href="about.html">About &amp; Story</a></li>
+      <li><a href="settings.html">Preferences &amp; Themes</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="home-hero">
+      <div class="home-hero-bg-glow" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <div class="hero-subtitle-wrap">
+          <span class="hero-subtitle">Class 10 School Project</span>
+          <span class="chip" style="font-size:0.75rem;">14 Films · Cinema &amp; Science Monograph</span>
+        </div>
+        <h1 class="hero-title">
+          Where Cinema Meets <span class="title-italic">Curiosity.</span>
+        </h1>
+        <p class="hero-description" data-personal="site-tagline">
+          A personal cinema monograph created for my Class 10 school project. Here are my summaries, reflections, and life lessons from 14 films that shaped how I understand science, courage, and my future.
+        </p>
+        <div class="hero-ctas">
+          <a href="films.html" class="btn btn-primary" data-transition-title="The Archive">
+            <span>Enter the Archive</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="about.html" class="btn btn-outline" data-transition-title="My Project Story">
+            <span>About My Project</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Floating Parallax Layer Posters -->
+      <div class="hero-floating-elements" aria-hidden="true">
+        <div class="hero-float-card hero-float-1" id="float-walle"></div>
+        <div class="hero-float-card hero-float-2" id="float-interstellar"></div>
+        <div class="hero-float-card hero-float-3" id="float-coco"></div>
+      </div>
+    </section>
+
+    <!-- Marquee Banner -->
+    <div class="home-marquee" aria-hidden="true">
+      <div class="marquee-inner">
+        <span class="marquee-item">WALL·E <span class="marquee-dot"></span></span>
+        <span class="marquee-item">INTERSTELLAR <span class="marquee-dot"></span></span>
+        <span class="marquee-item">OCTOBER SKY <span class="marquee-dot"></span></span>
+        <span class="marquee-item">COCO <span class="marquee-dot"></span></span>
+        <span class="marquee-item">THE BOY WHO HARNESSED THE WIND <span class="marquee-dot"></span></span>
+        <span class="marquee-item">HIDDEN FIGURES <span class="marquee-dot"></span></span>
+        <span class="marquee-item">INSIDE OUT <span class="marquee-dot"></span></span>
+        <span class="marquee-item">THE MAN WHO KNEW INFINITY <span class="marquee-dot"></span></span>
+        <span class="marquee-item">I, ROBOT <span class="marquee-dot"></span></span>
+        <span class="marquee-item">ZOOTOPIA <span class="marquee-dot"></span></span>
+        <span class="marquee-item">MOANA <span class="marquee-dot"></span></span>
+        <span class="marquee-item">AVATAR <span class="marquee-dot"></span></span>
+        <span class="marquee-item">AKEELAH AND THE BEE <span class="marquee-dot"></span></span>
+        <span class="marquee-item">MEN IN BLACK <span class="marquee-dot"></span></span>
+      </div>
+    </div>
+
+    <!-- Introduction with Scroll-Scrubbed Text -->
+    <section class="home-intro container">
+      <div class="intro-meta">01 / Student Project Philosophy</div>
+      <p class="intro-quote-scrub" id="scrub-quote">
+        As a Class 10 student preparing for my future in science, I believe movies are more than just entertainment—they are blueprints for human courage, optical mirrors of what we can achieve, and quiet compasses that remind us why striving toward the stars is worth every broken launchpad.
+      </p>
+      <div class="intro-author">
+        <div class="intro-author-avatar">S</div>
+        <div>
+          <strong style="color:var(--ink); font-size:1.1rem; display:block;">Supriya</strong>
+          <span style="color:var(--ink-faint); font-size:0.85rem; font-family:var(--font-mono);">Class 10 Student · Creator &amp; Curator</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pinned Horizontal Featured Carousel -->
+    <section class="home-featured-section container">
+      <div class="featured-header">
+        <div>
+          <div class="section-eyebrow">Curator’s Choice</div>
+          <h2 class="section-heading" style="margin-bottom:0.5rem;">Featured Monograph Studies</h2>
+          <p style="color:var(--ink-muted); margin:0;">Five pivotal films that defined my science mindset and biggest dreams.</p>
+        </div>
+        <div class="slider-controls-wrap">
+          <div class="slider-arrows">
+            <button class="slider-arrow-btn" id="featured-prev" aria-label="Previous films" title="Previous films">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            </button>
+            <button class="slider-arrow-btn" id="featured-next" aria-label="Next films" title="Next films">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+          <a href="films.html" class="btn btn-outline">View All 14</a>
+        </div>
+      </div>
+
+      <div class="horizontal-slider-container" id="horizontal-slider" tabindex="0" role="region" aria-label="Featured films carousel">
+        <div class="horizontal-slider-track" id="featured-track">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Slider Progress Indicator -->
+      <div class="slider-progress-bar" aria-hidden="true">
+        <div class="slider-progress-thumb" id="featured-progress"></div>
+      </div>
+    </section>
+
+    <!-- Live Stats Section -->
+    <section class="home-stats-section">
+      <div class="container stats-grid">
+        <div class="stat-item">
+          <div class="stat-item-number" data-target="14">14</div>
+          <div class="stat-item-label">Films Archival Studies</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-number" data-target="27">27</div>
+          <div class="stat-item-label">Total Viewing Hours</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-number" data-target="9.5">9.5</div>
+          <div class="stat-item-label">Average Rating / 10</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-number" data-target="14">14</div>
+          <div class="stat-item-label">Personal Essays</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Narrator Story Invitation -->
+    <section class="container">
+      <div class="narrator-invite-card">
+        <div class="narrator-invite-text">
+          <span class="chip" style="margin-bottom:0.75rem;">Interactive Narration</span>
+          <h3>Listen to the Curator's Prologue</h3>
+          <p>Prefer to listen? Our Web Speech audio narrator will read the philosophy, notes, and behind-the-scenes thoughts aloud as you browse.</p>
+        </div>
+        <button class="btn btn-primary" id="btn-listen-prologue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          <span>Listen to Prologue</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-wordmark">NEOMA</div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4 style="font-family:var(--font-display); font-size:1.5rem; margin-bottom:0.5rem;" data-personal="site-title">Neoma</h4>
+          <p>A handcrafted cinema &amp; learning monograph created by Supriya for her Class 10 school project, exploring 14 films that inspire science, empathy, and ambition.</p>
+          <p class="hand-note" style="margin-top:1rem;">Class 10 School Project · Code &amp; Cinema</p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="films.html">Film Archive</a></li>
+            <li><a href="about.html">About &amp; Story</a></li>
+            <li><a href="settings.html">Settings</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Quick Settings</div>
+          <ul class="footer-links">
+            <li><a href="settings.html#themes">Color Themes (6)</a></li>
+            <li><a href="settings.html#petals">Petal Density</a></li>
+            <li><a href="settings.html#narration">Speech Engine</a></li>
+            <li><a href="settings.html#reading">Reading Comfort</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>© 2026 Neoma · Handcrafted with vanilla HTML, CSS &amp; JS. No frameworks.</div>
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <button class="had-fun-btn" id="btn-had-fun" aria-label="Had Fun?">
+          <span>Had Fun? 🌸</span>
+        </button>
+        <button class="back-to-top-btn" aria-label="Back to top of page">
+          <span>Back to Top</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page Logic Script -->
+  <script type="module">
+    import { movies, generatePlaceholderPoster } from "./js/movies.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Populate floating hero posters
+      const floatWalle = document.getElementById("float-walle");
+      const floatInter = document.getElementById("float-interstellar");
+      const floatCoco = document.getElementById("float-coco");
+
+      const walleMovie = movies.find(m => m.id === "walle");
+      const interMovie = movies.find(m => m.id === "interstellar");
+      const cocoMovie = movies.find(m => m.id === "coco");
+
+      if (floatWalle && walleMovie) {
+        const fallback = generatePlaceholderPoster(walleMovie.title, walleMovie.year, walleMovie.director, walleMovie.palette.primary, walleMovie.palette.accent);
+        floatWalle.innerHTML = `<img src="${walleMovie.poster || fallback}" onerror="this.src='${fallback}'" alt="WALL-E Poster" style="width:100%;height:100%;object-fit:cover;">`;
+      }
+      if (floatInter && interMovie) {
+        const fallback = generatePlaceholderPoster(interMovie.title, interMovie.year, interMovie.director, interMovie.palette.primary, interMovie.palette.accent);
+        floatInter.innerHTML = `<img src="${interMovie.poster || fallback}" onerror="this.src='${fallback}'" alt="Interstellar Poster" style="width:100%;height:100%;object-fit:cover;">`;
+      }
+      if (floatCoco && cocoMovie) {
+        const fallback = generatePlaceholderPoster(cocoMovie.title, cocoMovie.year, cocoMovie.director, cocoMovie.palette.primary, cocoMovie.palette.accent);
+        floatCoco.innerHTML = `<img src="${cocoMovie.poster || fallback}" onerror="this.src='${fallback}'" alt="Coco Poster" style="width:100%;height:100%;object-fit:cover;">`;
+      }
+
+      // 2. Populate Featured Carousel (5 films)
+      const featuredTrack = document.getElementById("featured-track");
+      const sliderContainer = document.getElementById("horizontal-slider");
+      const prevBtn = document.getElementById("featured-prev");
+      const nextBtn = document.getElementById("featured-next");
+      const progressThumb = document.getElementById("featured-progress");
+
+      const featuredIds = ["walle", "interstellar", "october-sky", "coco", "boy-harnessed-wind"];
+      const featuredMovies = featuredIds.map(id => movies.find(m => m.id === id)).filter(Boolean);
+
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+      let hasDragged = false;
+
+      if (featuredTrack) {
+        featuredMovies.forEach(movie => {
+          const card = document.createElement("a");
+          card.href = `movie.html?id=${movie.id}`;
+          card.className = "film-card featured-slide-card";
+          card.setAttribute("data-transition-title", movie.title);
+          card.setAttribute("draggable", "false");
+
+          const posterFallback = generatePlaceholderPoster(movie.title, movie.year, movie.director, movie.palette.primary, movie.palette.accent);
+          const finalPoster = movie.poster || posterFallback;
+
+          card.innerHTML = `
+            <div class="film-card-media">
+              <img src="${finalPoster}" onerror="this.src='${posterFallback}'" alt="${movie.title} Poster" class="film-card-img" loading="lazy" draggable="false">
+              <div class="film-card-shine"></div>
+              <div class="film-card-badge">★ ${movie.review.rating}</div>
+            </div>
+            <div class="film-card-content">
+              <div class="film-card-collection">${movie.genres[0].toUpperCase()}</div>
+              <h3 class="film-card-title">${movie.title}</h3>
+              <p class="film-card-tagline">${movie.tagline}</p>
+              <div class="film-card-footer">
+                <span>${movie.year} · ${movie.runtime}</span>
+                <span>Study ↗</span>
+              </div>
+            </div>
+          `;
+
+          // Prevent opening link when dragged
+          card.addEventListener("click", (e) => {
+            if (hasDragged) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+          });
+
+          featuredTrack.appendChild(card);
+        });
+      }
+
+      function updateSliderUI() {
+        if (!sliderContainer) return;
+        const maxScroll = sliderContainer.scrollWidth - sliderContainer.clientWidth;
+        if (maxScroll <= 0) {
+          if (prevBtn) prevBtn.disabled = true;
+          if (nextBtn) nextBtn.disabled = true;
+          if (progressThumb) progressThumb.style.width = "100%";
+          return;
+        }
+
+        const current = sliderContainer.scrollLeft;
+        if (prevBtn) prevBtn.disabled = current <= 4;
+        if (nextBtn) nextBtn.disabled = current >= maxScroll - 4;
+
+        if (progressThumb) {
+          const percent = Math.min(1, Math.max(0, current / maxScroll));
+          const thumbWidth = 25; // 25%
+          progressThumb.style.width = `${thumbWidth}%`;
+          progressThumb.style.transform = `translateX(${percent * (100 / thumbWidth - 1) * 100}%)`;
+        }
+      }
+
+      if (sliderContainer) {
+        // Drag to scroll
+        sliderContainer.addEventListener("mousedown", (e) => {
+          isDown = true;
+          hasDragged = false;
+          sliderContainer.classList.add("is-dragging");
+          startX = e.pageX - sliderContainer.offsetLeft;
+          scrollLeft = sliderContainer.scrollLeft;
+        });
+
+        window.addEventListener("mouseup", () => {
+          if (isDown) {
+            isDown = false;
+            if (sliderContainer) sliderContainer.classList.remove("is-dragging");
+            setTimeout(() => { hasDragged = false; }, 50);
+          }
+        });
+
+        sliderContainer.addEventListener("mousemove", (e) => {
+          if (!isDown) return;
+          const x = e.pageX - sliderContainer.offsetLeft;
+          const walk = (x - startX) * 1.5;
+          if (Math.abs(x - startX) > 6) {
+            hasDragged = true;
+          }
+          sliderContainer.scrollLeft = scrollLeft - walk;
+          updateSliderUI();
+        });
+
+        // Mousewheel: horizontal glide on computer mouse
+        sliderContainer.addEventListener("wheel", (e) => {
+          if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+            const maxScroll = sliderContainer.scrollWidth - sliderContainer.clientWidth;
+            const canLeft = sliderContainer.scrollLeft > 0 && e.deltaY < 0;
+            const canRight = sliderContainer.scrollLeft < maxScroll - 4 && e.deltaY > 0;
+            if (canLeft || canRight) {
+              e.preventDefault();
+              sliderContainer.scrollLeft += e.deltaY * 0.9;
+              updateSliderUI();
+            }
+          }
+        }, { passive: false });
+
+        sliderContainer.addEventListener("scroll", updateSliderUI);
+
+        // Arrows navigation
+        if (prevBtn) {
+          prevBtn.addEventListener("click", () => {
+            const cardWidth = sliderContainer.querySelector(".featured-slide-card")?.offsetWidth || 360;
+            sliderContainer.scrollBy({ left: -(cardWidth + 32), behavior: "smooth" });
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener("click", () => {
+            const cardWidth = sliderContainer.querySelector(".featured-slide-card")?.offsetWidth || 360;
+            sliderContainer.scrollBy({ left: (cardWidth + 32), behavior: "smooth" });
+          });
+        }
+
+        // Keyboard arrow navigation
+        sliderContainer.addEventListener("keydown", (e) => {
+          const cardWidth = sliderContainer.querySelector(".featured-slide-card")?.offsetWidth || 360;
+          if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            sliderContainer.scrollBy({ left: -(cardWidth + 32), behavior: "smooth" });
+          } else if (e.key === "ArrowRight") {
+            e.preventDefault();
+            sliderContainer.scrollBy({ left: (cardWidth + 32), behavior: "smooth" });
+          }
+        });
+
+        setTimeout(updateSliderUI, 100);
+        window.addEventListener("resize", updateSliderUI);
+      }
+
+      // 3. Scroll-Scrub Quote Animation (GSAP ScrollTrigger)
+      const scrubQuote = document.getElementById("scrub-quote");
+      if (scrubQuote && window.gsap && window.ScrollTrigger) {
+        const words = scrubQuote.textContent.trim().split(/\s+/);
+        scrubQuote.innerHTML = words.map(w => `<span>${w} </span>`).join("");
+        const spans = scrubQuote.querySelectorAll("span");
+
+        gsap.to(spans, {
+          color: "var(--ink)",
+          stagger: 0.05,
+          scrollTrigger: {
+            trigger: scrubQuote,
+            start: "top 75%",
+            end: "bottom 45%",
+            scrub: true
+          }
+        });
+      }
+
+
+      // 5. Narrator Story Prologue Button
+      const listenBtn = document.getElementById("btn-listen-prologue");
+      if (listenBtn) {
+        listenBtn.addEventListener("click", () => {
+          if (window.ppApp && window.ppApp.narrator) {
+            const p = document.createElement("p");
+            p.textContent = "Welcome to Neoma. A personal movie journal and Class 10 school project by Supriya. Films that taught me to dream bigger. As a tenth-grade student, I believe that movies are blueprints for human courage, optical mirrors of what we might become, and quiet compasses that remind us why striving toward the stars is worth every broken launchpad. Explore my fourteen curated film studies, and enjoy the journey.";
+            window.ppApp.narrator.speakParagraphs([p], "Curator's Prologue");
+          }
+        });
+      }
+    });
+  </script>
+
+  <!-- Core App Init -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
+

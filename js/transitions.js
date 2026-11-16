@@ -130,8 +130,9 @@ export class TransitionManager {
   playPageEntry() {
     if (!window.gsap || !this.curtain) return;
 
-    // If preloader is present on this page (home), preloader handles the intro
-    if (document.getElementById("preloader")) {
+    // If preloader is present and active (first visit), preloader handles the intro
+    const preloader = document.getElementById("preloader");
+    if (preloader && !preloader.classList.contains("hidden")) {
       gsap.set(this.curtain, { y: "100%" });
       sessionStorage.removeItem("pp_curtain_active");
       return;

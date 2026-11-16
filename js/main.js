@@ -6,14 +6,12 @@
 import { SettingsManager } from "./settings.js";
 import { PetalsEngine } from "./petals.js";
 import { AudioManager } from "./audio.js";
-import { Narrator } from "./narrator.js";
 import { TransitionManager } from "./transitions.js";
 
 export class App {
   constructor() {
     this.settings = new SettingsManager();
     this.audio = new AudioManager();
-    this.narrator = new Narrator(this.audio);
     this.transitions = new TransitionManager(this.audio);
     this.petals = null;
     this.lenis = null;
@@ -39,7 +37,6 @@ export class App {
     this.initCardInteractiveMotion();
     this.initHeaderScroll();
     this.initMobileNav();
-    this.initOutroModal();
     this.bindGlobalAudioEvents();
 
     // Notify transition manager
@@ -89,25 +86,6 @@ export class App {
         }
       });
     }
-
-    // 6. Had Fun? Button in footer
-    const footerBottom = document.querySelector(".footer-bottom");
-    if (footerBottom && !document.getElementById("btn-had-fun")) {
-      const hadFunBtn = document.createElement("button");
-      hadFunBtn.className = "had-fun-btn";
-      hadFunBtn.id = "btn-had-fun";
-      hadFunBtn.setAttribute("aria-label", "Had Fun?");
-      hadFunBtn.innerHTML = `
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        <span>Had Fun?</span>
-      `;
-      const bttBtn = footerBottom.querySelector(".back-to-top-btn");
-      if (bttBtn) {
-        footerBottom.insertBefore(hadFunBtn, bttBtn);
-      } else {
-        footerBottom.appendChild(hadFunBtn);
-      }
-    }
   }
 
   /* ==========================================================================
@@ -117,8 +95,12 @@ export class App {
     const preloader = document.getElementById("preloader");
     if (!preloader) return;
 
-    // Reset sessionStorage flag on load so the intro always plays reliably on visit/reload
-    sessionStorage.removeItem("pp_has_preloaded");
+    // Only show preloader on the first visit of the session
+    if (sessionStorage.getItem("pp_has_preloaded")) {
+      preloader.classList.add("hidden");
+      preloader.style.display = "none";
+      return;
+    }
 
     const countEl = preloader.querySelector(".preloader-count");
     const soundChoice = preloader.querySelector(".preloader-sound-choice");
@@ -128,6 +110,7 @@ export class App {
     const dismissPreloader = (withSound = false) => {
       if (dismissed) return;
       dismissed = true;
+      sessionStorage.setItem("pp_has_preloaded", "true");
       if (withSound && this.audio) {
         this.audio.play();
       }
@@ -141,11 +124,6 @@ export class App {
         clearInterval(interval);
         if (countEl) countEl.textContent = "100";
         if (soundChoice) soundChoice.classList.add("ready");
-
-        // As soon as loading reaches 100, smoothly fade into the intro
-        setTimeout(() => {
-          dismissPreloader(false);
-        }, 220);
       } else {
         if (countEl) countEl.textContent = progress;
       }
@@ -607,127 +585,6 @@ export class App {
     if (closeBtn && drawer) {
       closeBtn.addEventListener("click", () => drawer.classList.remove("open"));
     }
-  }
-
-  /* ==========================================================================
-     Outro Curtain Modal ("Had Fun? — Leave or Read")
-     ========================================================================== */
-  initOutroModal() {
-    let modal = document.getElementById("outro-modal");
-    if (!modal) {
-      modal = document.createElement("div");
-      modal.id = "outro-modal";
-      modal.className = "outro-modal";
-      modal.setAttribute("role", "dialog");
-      modal.setAttribute("aria-modal", "true");
-      modal.setAttribute("aria-label", "Had Fun?");
-      modal.innerHTML = `
-        <div class="outro-modal-backdrop"></div>
-        <div class="outro-modal-dialog">
-          <div class="outro-flower-wrap">
-            <svg class="outro-flower" viewBox="0 0 24 24" fill="currentColor">
-              <circle cx="12" cy="12" r="3" />
-              <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" opacity="0.85" />
-              <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(72 12 12)" opacity="0.85" />
-              <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(144 12 12)" opacity="0.85" />
-              <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(216 12 12)" opacity="0.85" />
-              <path d="M12 2 C13 7 16 9 12 12 C8 9 11 7 12 2 Z" transform="rotate(288 12 12)" opacity="0.85" />
-            </svg>
-          </div>
-          <div class="outro-eyebrow">FINAL ACT · CURTAIN CALL</div>
-          <h2 class="outro-title">Had Fun?</h2>
-          <p class="outro-desc">
-            "Movies are blueprints for human courage." Thank you for exploring Neoma. Ready to exit, or would you like to stay and read?
-          </p>
-          <div class="outro-actions">
-            <button class="btn btn-outline outro-btn-read" id="outro-btn-read" style="flex:1;" onclick="const m=document.getElementById('outro-modal'); if(m){ m.classList.remove('active'); m.style.display='none'; } document.body.style.overflow='';">
-              <span>Read</span>
-            </button>
-            <button class="btn btn-primary outro-btn-leave" id="outro-btn-leave" style="flex:1;" onclick="try{window.close();}catch(e){} window.location.replace('about:blank');">
-              <span>Leave</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(modal);
-    }
-
-    const openModal = () => {
-      modal.style.display = "flex";
-      void modal.offsetHeight;
-      modal.classList.add("active");
-      document.body.style.overflow = "hidden";
-    };
-
-    const closeModal = () => {
-      modal.classList.remove("active");
-      modal.style.display = "none";
-      document.body.style.overflow = "";
-    };
-
-    const handleLeave = () => {
-      // 1. Immediately halt all audio and speech narration
-      if (this.audio) {
-        this.audio.stop();
-      }
-      if (window.speechSynthesis) {
-        window.speechSynthesis.cancel();
-      }
-
-      // 2. Close modal immediately
-      closeModal();
-
-      // 3. Attempt direct window close
-      try {
-        window.close();
-        window.open("", "_self");
-        window.close();
-      } catch (e) {}
-
-      // 4. Guaranteed exit: replace tab with about:blank immediately
-      window.location.replace("about:blank");
-    };
-
-    // Capture-phase delegation guarantees clicks always execute
-    document.addEventListener("click", (e) => {
-      // 1. Leave button
-      if (e.target.closest("#outro-btn-leave, .outro-btn-leave")) {
-        e.preventDefault();
-        e.stopPropagation();
-        handleLeave();
-        return;
-      }
-
-      // 2. Read button
-      if (e.target.closest("#outro-btn-read, .outro-btn-read")) {
-        e.preventDefault();
-        e.stopPropagation();
-        closeModal();
-        return;
-      }
-
-      // 3. Open Had Fun button
-      if (e.target.closest("#btn-had-fun, .had-fun-btn, [data-action='had-fun']")) {
-        e.preventDefault();
-        e.stopPropagation();
-        openModal();
-        return;
-      }
-
-      // 4. Click outside dialog on backdrop
-      if (modal.classList.contains("active") && (e.target.classList.contains("outro-modal-backdrop") || e.target === modal)) {
-        e.preventDefault();
-        closeModal();
-      }
-    }, true);
-
-    // Escape key to keep reading
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.classList.contains("active")) {
-        closeModal();
-      }
-    });
   }
 
   /* ==========================================================================

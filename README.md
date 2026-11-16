@@ -36,14 +36,14 @@ Right-click on `index.html` and choose **"Open with Live Server"**.
 /
 ├── index.html            Landing page (Preloader, Hero, Word-Scrub Intro, Marquee, Pinned Featured, Stats)
 ├── films.html            Complete 14-Film Monograph Archive (GSAP Flip filters, Grid/List/Timeline)
-├── movie.html?id=xxx     Dynamic Single Film Template (Side-nav, Summary, Speech Narration, Stills, Trailer)
+├── movie.html?id=xxx     Dynamic Single Film Template (Side-nav, Summary, Stills, Trailer)
 ├── about.html            Editorial Story of Supriya's Class 10 Project, Milestones, Technology
 ├── settings.html         Live Control Center (6 Themes, Custom Palette Generator, Motion, Petals, Dyslexia Font)
 │
 ├── css/
 │   ├── tokens.css        Design tokens, fluid typography clamp(), spacing, shadows, radii
 │   ├── base.css          Resets, custom cursor, SVG film grain, canvas layer, accessibility
-│   ├── components.css    Header, footer, buttons, film cards, floating audio dock, narrator bar, lightbox
+│   ├── components.css    Header, footer, buttons, film cards, floating audio dock, lightbox
 │   ├── pages.css         Page-specific layouts: hero, archive grid, movie detail, collections, settings
 │   └── themes.css        6 themes (Blush, Midnight Rose, Sakura, Rose Gold, Lavender Dusk, Peach Cream, Cinema Noir)
 │
@@ -52,7 +52,6 @@ Right-click on `index.html` and choose **"Open with Live Server"**.
 │   ├── movies.js         Complete 14-film dataset, procedural SVG gradient poster/backdrop generators
 │   ├── petals.js         DPR-aware canvas 2D falling sakura physics engine with wind and mouse repulsion
 │   ├── audio.js          Cross-page ambient music player, visualizer equalizer, smart ducking, Web Audio synth
-│   ├── narrator.js       Web Speech API controller with sentence chunking, word highlight & Chrome keep-alive
 │   ├── settings.js       Live settings engine, token regeneration, export/import JSON, instant preview
 │   └── transitions.js    Curtain page transitions + View Transitions API integration
 │
@@ -162,7 +161,7 @@ All film entries are data-driven. To add a 15th film:
 ## 6. Accessibility & Performance Benchmarks
 
 - **WCAG AA Compliance**: All text tokens exceed 4.5:1 contrast ratios in light and dark modes. High-contrast toggle available.
-- **Screen Reader Support**: Semantic landmarks (`<header>`, `<main>`, `<nav>`, `<aside>`, `<footer>`), ARIA live regions for filtered results and speech narrator.
+- **Screen Reader Support**: Semantic landmarks (`<header>`, `<main>`, `<nav>`, `<aside>`, `<footer>`), ARIA live regions for filtered results.
 - **Motion Reduction**: `prefers-reduced-motion` strictly honored; disables Lenis inertial scrolling, curtain wipes, and falling petals when requested.
 - **Performance**: Zero external render-blocking scripts; Google Fonts loaded with `display=swap`; zero build step or heavy framework hydration costs.
 

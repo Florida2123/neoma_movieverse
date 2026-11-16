@@ -6,6 +6,13 @@
   <title>About My Project — Neoma</title>
   <meta name="description" content="The story behind Neoma: a Class 10 school cinema monograph by Supriya exploring films that teach science, courage, and imagination.">
 
+  <!-- Favicon / Brand Icon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +76,7 @@
     <button class="close-btn" aria-label="Close mobile navigation">✕</button>
     <ul class="mobile-nav-list">
       <li><a href="index.html">Home</a></li>
-      <li><a href="films.html">Film Archive (14)</a></li>
+      <li><a href="films.html">Film Archive</a></li>
       <li><a href="about.html" class="active">About &amp; Story</a></li>
       <li><a href="settings.html">Preferences &amp; Themes</a></li>
     </ul>
@@ -79,21 +86,14 @@
     <!-- About Hero Section -->
     <section class="about-hero container">
       <div class="about-grid">
-        <!-- Photo Arch Illustration Placeholder -->
+        <!-- Curator Photo Arch -->
         <div class="about-photo-arch">
-          <svg viewBox="0 0 400 500" width="100%" height="100%" style="background:linear-gradient(135deg, var(--primary-soft), var(--bg));">
-            <defs>
-              <linearGradient id="photoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.3" />
-                <stop offset="100%" stop-color="var(--deep)" stop-opacity="0.7" />
-              </linearGradient>
-            </defs>
-            <circle cx="200" cy="200" r="120" fill="url(#photoGrad)" />
-            <path d="M 200 120 C 230 160 250 190 200 260 C 150 190 170 160 200 120 Z" fill="rgba(255,255,255,0.4)" />
-            <text x="200" y="340" text-anchor="middle" font-family="'Playfair Display', serif" font-size="28" font-weight="700" fill="var(--ink)">Supriya</text>
-            <text x="200" y="375" text-anchor="middle" font-family="'Caveat', cursive" font-size="20" fill="var(--primary)">Class 10 Student &amp; Curator</text>
-            <text x="200" y="415" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="2" fill="var(--ink-faint)">CLASS 10 SCHOOL PROJECT · 2026</text>
-          </svg>
+          <img src="assets/img/Supriya.jpeg" alt="Supriya — Class 10 Student &amp; Curator" class="about-photo-img">
+          <div class="about-photo-caption">
+            <h2 class="about-curator-name">Supriya</h2>
+            <div class="about-curator-role">Class 10 Student &amp; Curator</div>
+            <div class="about-curator-meta">CLASS 10 SCHOOL PROJECT · 2026</div>
+          </div>
         </div>
 
         <div>
@@ -119,23 +119,26 @@
       <div class="section-eyebrow">Milestones</div>
       <h2 class="section-heading">How My School Project Developed</h2>
 
-      <div style="border-left:2px solid var(--border); padding-left:2rem; margin-top:2.5rem; display:flex; flex-direction:column; gap:2.5rem;">
-        <div>
-          <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--primary); font-weight:700;">PHASE 1 — CURATING THE 14 FILMS</div>
-          <h3 style="font-family:var(--font-display); font-size:1.4rem; margin:0.35rem 0;">Connecting Cinema to High School Science &amp; Ethics</h3>
-          <p style="color:var(--ink-muted); margin:0;">Selecting 14 defining films that bridge our high school curriculum—physics, robotics, mathematics, psychology, and environmental science—with human perseverance.</p>
+      <div class="timeline-track">
+        <div class="timeline-item">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-phase">PHASE 1 — CURATING THE 14 FILMS</div>
+          <h3 class="timeline-title">Connecting Cinema to High School Science &amp; Ethics</h3>
+          <p class="timeline-desc">Selecting 14 defining films that bridge our high school curriculum—physics, robotics, mathematics, psychology, and environmental science—with human perseverance.</p>
         </div>
 
-        <div>
-          <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--primary); font-weight:700;">PHASE 2 — RESEARCH &amp; ESSAY WRITING</div>
-          <h3 style="font-family:var(--font-display); font-size:1.4rem; margin:0.35rem 0;">Analyzing Themes from a Student Perspective</h3>
-          <p style="color:var(--ink-muted); margin:0;">Drafting in-depth synopses, personal reviews, favorite scenes, and key life takeaways for each title as an academic study.</p>
+        <div class="timeline-item">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-phase">PHASE 2 — RESEARCH &amp; ESSAY WRITING</div>
+          <h3 class="timeline-title">Analyzing Themes from a Student Perspective</h3>
+          <p class="timeline-desc">Drafting in-depth synopses, personal reviews, favorite scenes, and key life takeaways for each title as an academic study.</p>
         </div>
 
-        <div>
-          <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--primary); font-weight:700;">PHASE 3 — THE DIGITAL WEB MONOGRAPH</div>
-          <h3 style="font-family:var(--font-display); font-size:1.4rem; margin:0.35rem 0;">A Pure Vanilla Code Presentation</h3>
-          <p style="color:var(--ink-muted); margin:0;">Coded entirely from scratch in vanilla HTML5, CSS custom properties, canvas 2D falling Sakura physics, ambient sound, and Web Speech narration for accessibility.</p>
+        <div class="timeline-item">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-phase">PHASE 3 — THE DIGITAL WEB MONOGRAPH</div>
+          <h3 class="timeline-title">A Pure Vanilla Code Presentation</h3>
+          <p class="timeline-desc">Coded entirely from scratch in vanilla HTML5, CSS custom properties, canvas 2D falling Sakura physics, and ambient sound.</p>
         </div>
       </div>
     </section>
@@ -160,10 +163,6 @@
         <div class="tech-card">
           <div class="tech-title">LENIS SMOOTH SCROLL</div>
           <p style="font-size:0.88rem; color:var(--ink-muted); margin:0;">Physics-based momentum scrolling synced seamlessly with ScrollTrigger tickers.</p>
-        </div>
-        <div class="tech-card">
-          <div class="tech-title">WEB SPEECH SYNTHESIS</div>
-          <p style="font-size:0.88rem; color:var(--ink-muted); margin:0;">Sentence-chunked audio narration with real-time text highlight tracking.</p>
         </div>
         <div class="tech-card">
           <div class="tech-title">CANVAS 2D SAKURA PHYSICS</div>
@@ -207,9 +206,6 @@
     <div class="container footer-bottom">
       <div>© 2026 Neoma · Pure vanilla code.</div>
       <div style="display:flex; align-items:center; gap:0.75rem;">
-        <button class="had-fun-btn" id="btn-had-fun" aria-label="Had Fun?">
-          <span>Had Fun? 🌸</span>
-        </button>
         <button class="back-to-top-btn" aria-label="Back to top">
           <span>Back to Top</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>

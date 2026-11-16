@@ -214,7 +214,7 @@ export class AudioManager {
     this.saveState();
   }
 
-  /* Smart ducking for speech narration and trailers */
+  /* Smart ducking for trailers */
   duck(enable = true) {
     this.isDucked = enable;
     const target = enable ? this.volume * 0.15 : this.volume;

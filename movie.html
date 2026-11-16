@@ -6,6 +6,13 @@
   <title>Movie Study — Neoma</title>
   <meta name="description" content="Cinematic summary, personal review, and reflection from the Neoma monograph.">
 
+  <!-- Favicon / Brand Icon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,7 +80,7 @@
     <button class="close-btn" aria-label="Close mobile navigation">✕</button>
     <ul class="mobile-nav-list">
       <li><a href="index.html">Home</a></li>
-      <li><a href="films.html">Film Archive (14)</a></li>
+      <li><a href="films.html">Film Archive</a></li>
       <li><a href="about.html">About &amp; Story</a></li>
       <li><a href="settings.html">Preferences &amp; Themes</a></li>
     </ul>
@@ -151,10 +158,6 @@
             <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--ink-faint);">
               Reading Time: <span id="reading-time">3 min</span>
             </div>
-            <button class="btn btn-outline" id="btn-listen-summary" style="padding:0.4rem 1rem; font-size:0.82rem;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
-              <span>Listen to Summary</span>
-            </button>
           </div>
 
           <div class="summary-paragraphs drop-cap" id="summary-paragraphs">
@@ -292,9 +295,6 @@
     <div class="container footer-bottom">
       <div>© 2026 Neoma · Pure vanilla code.</div>
       <div style="display:flex; align-items:center; gap:0.75rem;">
-        <button class="had-fun-btn" id="btn-had-fun" aria-label="Had Fun?">
-          <span>Had Fun? 🌸</span>
-        </button>
         <button class="back-to-top-btn" aria-label="Back to top">
           <span>Back to Top</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
@@ -390,17 +390,6 @@
       const wordCount = movie.summary.split(/\s+/).length;
       const readMin = Math.max(1, Math.ceil(wordCount / 180));
       document.getElementById("reading-time").textContent = `${readMin} min read`;
-
-      // Narration Button for Summary
-      const listenBtn = document.getElementById("btn-listen-summary");
-      if (listenBtn) {
-        listenBtn.addEventListener("click", () => {
-          if (window.ppApp && window.ppApp.narrator) {
-            const pEls = summaryContainer.querySelectorAll("p");
-            window.ppApp.narrator.speakParagraphs(Array.from(pEls), `${movie.title} Summary`);
-          }
-        });
-      }
 
       // 5. Render Review & Rating Ring
       document.getElementById("rating-circle-val").textContent = movie.review.rating;

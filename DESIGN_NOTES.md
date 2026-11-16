@@ -21,7 +21,7 @@
    - 3D card tilt with a delicate specular sheen that tracks the cursor angle.
 4. **Cinematic Immersion**:
    - Interactive falling petals with 3D rotational oscillation, mouse-avoidance physics, and scroll-velocity wind gusts.
-   - Ambient soundscape player with responsive equalizer bars, cross-page persistence, and intelligent audio ducking during speech narration and trailer playback.
+   - Ambient soundscape player with responsive equalizer bars, cross-page persistence, and intelligent audio ducking during trailer playback.
 
 ---
 
@@ -127,14 +127,14 @@ The system supports 6 curated editorial themes plus a real-time custom theme eng
 /
 ├── index.html            [Home: Preloader, Hero, Story scrub, Marquee, Horizontal Featured, Stats, Teasers]
 ├── films.html            [Archive: GSAP Flip filter system, 14 film cards, Grid/List/Timeline toggle]
-├── movie.html?id=xxx     [Detail: Dynamic single template, sticky sub-nav, narration, rating petals, gallery lightbox, trailer]
+├── movie.html?id=xxx     [Detail: Dynamic single template, sticky sub-nav, rating petals, gallery lightbox, trailer]
 ├── about.html            [Editorial: Story of Supriya's Class 10 project, timeline, tech stack]
-├── settings.html         [Control Center: Themes, custom color generator, typography, motion, petals, audio, speech]
+├── settings.html         [Control Center: Themes, custom color generator, typography, motion, petals, audio]
 │
 ├── css/
 │   ├── base.css          [Resets, fluid typography, cursor, noise grain, layout primitives]
 │   ├── tokens.css        [All CSS variables, spacing scales, shadows, radii, transitions]
-│   ├── components.css    [Header, footer, buttons, cards, modal, audio player, narrator bar, lightbox]
+│   ├── components.css    [Header, footer, buttons, cards, modal, audio player, lightbox]
 │   ├── pages.css         [Page-specific layouts: hero, archive grid, movie detail, collections, about, settings]
 │   └── themes.css        [Theme classes & overrides for 6 themes + custom overrides]
 │
@@ -143,7 +143,6 @@ The system supports 6 curated editorial themes plus a real-time custom theme eng
 │   ├── movies.js         [Complete dataset for 14 films: reviews, summaries, palettes, SVG posters]
 │   ├── petals.js         [Canvas 2D falling sakura physics engine with wind & mouse interaction]
 │   ├── audio.js          [Persistent ambient soundscape player, equalizer, ducking manager]
-│   ├── narrator.js       [Web Speech API controller with sentence chunking & word highlighting]
 │   ├── settings.js       [Live preferences engine with export/import and instant CSS updates]
 │   └── transitions.js    [Curtain page transitions + View Transitions API fallback]
 │

@@ -37,10 +37,6 @@ export const DEFAULT_SETTINGS = {
   musicVolume: 0.45,
   uiSounds: true,
 
-  // Narration
-  narratorSpeed: 1.0,
-  narratorPitch: 1.0,
-
   // Reading & Accessibility
   dyslexiaFont: false,
   highContrast: false,
@@ -76,7 +72,7 @@ export class SettingsManager {
   save() {
     try {
       localStorage.setItem("pp_global_settings", JSON.stringify(this.settings));
-      // Dispatch event for other components (petals, audio, narrator)
+      // Dispatch event for other components (petals, audio)
       window.dispatchEvent(new CustomEvent("settingsChanged", { detail: this.settings }));
     } catch (e) {
       console.warn("Could not save settings to localStorage", e);

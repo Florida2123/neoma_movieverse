@@ -6,6 +6,13 @@
   <title>Neoma — Class 10 School Project by Supriya</title>
   <meta name="description" content="A Class 10 school cinema monograph by Supriya exploring 14 transformative films that teach science, courage, empathy, and the future.">
   
+  <!-- Favicon / Brand Icon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  
   <!-- Open Graph -->
   <meta property="og:title" content="Neoma — Class 10 School Project by Supriya">
   <meta property="og:description" content="14 films that taught me to dream bigger. A Class 10 school cinema monograph.">
@@ -81,7 +88,7 @@
       </nav>
 
       <div class="header-actions">
-        <a href="films.html" class="btn btn-outline" style="padding: 0.5rem 1.15rem; font-size: 0.85rem;">Browse 14 Films</a>
+        <a href="films.html" class="btn btn-outline" style="padding: 0.5rem 1.15rem; font-size: 0.85rem;">View Archive</a>
         <button class="menu-toggle-btn" aria-label="Open mobile menu">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
@@ -94,7 +101,7 @@
     <button class="close-btn" aria-label="Close mobile navigation">✕</button>
     <ul class="mobile-nav-list">
       <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="films.html">Film Archive (14)</a></li>
+      <li><a href="films.html">Film Archive</a></li>
       <li><a href="about.html">About &amp; Story</a></li>
       <li><a href="settings.html">Preferences &amp; Themes</a></li>
     </ul>
@@ -107,7 +114,6 @@
       <div class="container hero-content">
         <div class="hero-subtitle-wrap">
           <span class="hero-subtitle">Class 10 School Project</span>
-          <span class="chip" style="font-size:0.75rem;">14 Films · Cinema &amp; Science Monograph</span>
         </div>
         <h1 class="hero-title">
           Where Cinema Meets <span class="title-italic">Curiosity.</span>
@@ -186,7 +192,7 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </button>
           </div>
-          <a href="films.html" class="btn btn-outline">View All 14</a>
+          <a href="films.html" class="btn btn-outline">View All Films</a>
         </div>
       </div>
 
@@ -223,21 +229,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Narrator Story Invitation -->
-    <section class="container">
-      <div class="narrator-invite-card">
-        <div class="narrator-invite-text">
-          <span class="chip" style="margin-bottom:0.75rem;">Interactive Narration</span>
-          <h3>Listen to the Curator's Prologue</h3>
-          <p>Prefer to listen? Our Web Speech audio narrator will read the philosophy, notes, and behind-the-scenes thoughts aloud as you browse.</p>
-        </div>
-        <button class="btn btn-primary" id="btn-listen-prologue">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-          <span>Listen to Prologue</span>
-        </button>
-      </div>
-    </section>
   </main>
 
   <!-- Shared Footer -->
@@ -266,7 +257,6 @@
           <ul class="footer-links">
             <li><a href="settings.html#themes">Color Themes (6)</a></li>
             <li><a href="settings.html#petals">Petal Density</a></li>
-            <li><a href="settings.html#narration">Speech Engine</a></li>
             <li><a href="settings.html#reading">Reading Comfort</a></li>
           </ul>
         </div>
@@ -276,9 +266,6 @@
     <div class="container footer-bottom">
       <div>© 2026 Neoma · Handcrafted with vanilla HTML, CSS &amp; JS. No frameworks.</div>
       <div style="display:flex; align-items:center; gap:0.75rem;">
-        <button class="had-fun-btn" id="btn-had-fun" aria-label="Had Fun?">
-          <span>Had Fun? 🌸</span>
-        </button>
         <button class="back-to-top-btn" aria-label="Back to top of page">
           <span>Back to Top</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
@@ -420,19 +407,79 @@
           updateSliderUI();
         });
 
-        // Mousewheel: horizontal glide on computer mouse
-        sliderContainer.addEventListener("wheel", (e) => {
-          if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-            const maxScroll = sliderContainer.scrollWidth - sliderContainer.clientWidth;
-            const canLeft = sliderContainer.scrollLeft > 0 && e.deltaY < 0;
-            const canRight = sliderContainer.scrollLeft < maxScroll - 4 && e.deltaY > 0;
-            if (canLeft || canRight) {
-              e.preventDefault();
-              sliderContainer.scrollLeft += e.deltaY * 0.9;
-              updateSliderUI();
+        // Mobile touch swipe & drag
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchScrollLeft = 0;
+        let isTouching = false;
+        let isHorizontalSwipe = null;
+        let lastTouchX = 0;
+        let lastTouchTime = 0;
+        let touchVelocityX = 0;
+
+        sliderContainer.addEventListener("touchstart", (e) => {
+          if (e.touches.length !== 1) return;
+          isTouching = true;
+          hasDragged = false;
+          isHorizontalSwipe = null;
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          lastTouchX = touchStartX;
+          lastTouchTime = performance.now();
+          touchVelocityX = 0;
+          touchScrollLeft = sliderContainer.scrollLeft;
+        }, { passive: true });
+
+        sliderContainer.addEventListener("touchmove", (e) => {
+          if (!isTouching || e.touches.length !== 1) return;
+          const curX = e.touches[0].clientX;
+          const curY = e.touches[0].clientY;
+          const diffX = curX - touchStartX;
+          const diffY = curY - touchStartY;
+
+          if (isHorizontalSwipe === null) {
+            if (Math.abs(diffX) > 6 || Math.abs(diffY) > 6) {
+              isHorizontalSwipe = Math.abs(diffX) >= Math.abs(diffY);
+              if (!isHorizontalSwipe) {
+                // Vertical scrolling on mobile page - release touch drag
+                isTouching = false;
+                sliderContainer.classList.remove("is-dragging");
+                return;
+              }
+              sliderContainer.classList.add("is-dragging");
             }
           }
-        }, { passive: false });
+
+          if (isHorizontalSwipe) {
+            hasDragged = true;
+            const now = performance.now();
+            const dt = now - lastTouchTime;
+            if (dt > 5) {
+              touchVelocityX = (curX - lastTouchX) / dt;
+              lastTouchX = curX;
+              lastTouchTime = now;
+            }
+            sliderContainer.scrollLeft = touchScrollLeft - diffX;
+            updateSliderUI();
+          }
+        }, { passive: true });
+
+        const onTouchEnd = () => {
+          if (isTouching) {
+            isTouching = false;
+            sliderContainer.classList.remove("is-dragging");
+            if (isHorizontalSwipe && Math.abs(touchVelocityX) > 0.25) {
+              const momentum = -touchVelocityX * 220;
+              sliderContainer.scrollBy({ left: momentum, behavior: "smooth" });
+            }
+            if (hasDragged) {
+              setTimeout(() => { hasDragged = false; }, 100);
+            }
+          }
+        };
+
+        sliderContainer.addEventListener("touchend", onTouchEnd, { passive: true });
+        sliderContainer.addEventListener("touchcancel", onTouchEnd, { passive: true });
 
         sliderContainer.addEventListener("scroll", updateSliderUI);
 
@@ -482,19 +529,6 @@
             start: "top 75%",
             end: "bottom 45%",
             scrub: true
-          }
-        });
-      }
-
-
-      // 5. Narrator Story Prologue Button
-      const listenBtn = document.getElementById("btn-listen-prologue");
-      if (listenBtn) {
-        listenBtn.addEventListener("click", () => {
-          if (window.ppApp && window.ppApp.narrator) {
-            const p = document.createElement("p");
-            p.textContent = "Welcome to Neoma. A personal movie journal and Class 10 school project by Supriya. Films that taught me to dream bigger. As a tenth-grade student, I believe that movies are blueprints for human courage, optical mirrors of what we might become, and quiet compasses that remind us why striving toward the stars is worth every broken launchpad. Explore my fourteen curated film studies, and enjoy the journey.";
-            window.ppApp.narrator.speakParagraphs([p], "Curator's Prologue");
           }
         });
       }
